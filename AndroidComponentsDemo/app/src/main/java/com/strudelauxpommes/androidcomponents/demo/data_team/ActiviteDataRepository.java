@@ -24,8 +24,8 @@ public class ActiviteDataRepository {
 
     public LiveData<List<ActiviteData>> loadActiviteData() {
         ActiviteData defaultActiviteData = new ActiviteData();
-        Date temp = new Date();
-        defaultActiviteData.setDate(new Date(temp.getYear(),temp.getMonth(),temp.getDay()));
+        LocalDateTime date = LocalDateTime.now();
+        defaultActiviteData.setDate(LocalDateTime.of(date.getYear(),date.getMonth(),date.getDayOfMonth(),0,0));
         defaultActiviteData.setActivite("Rien");
         defaultActiviteData.setIntensite(1);
         ArrayList<ActiviteData> list = new ArrayList<ActiviteData>();

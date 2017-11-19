@@ -20,16 +20,16 @@ import java.util.Date;
 public class ActiviteData {
     @TypeConverters({DateConverter.class})
     @NonNull
-    private Date date;
+    private LocalDateTime date;
     @NonNull
     private String activite;
     private int intensite;
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

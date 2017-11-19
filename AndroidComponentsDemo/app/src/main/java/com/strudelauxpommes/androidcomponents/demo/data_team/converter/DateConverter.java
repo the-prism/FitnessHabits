@@ -2,6 +2,8 @@ package com.strudelauxpommes.androidcomponents.demo.data_team.converter;
 
 import android.arch.persistence.room.TypeConverter;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 
 /**
@@ -10,12 +12,12 @@ import java.util.Date;
 
 public class DateConverter {
     @TypeConverter
-    public Date fromLong(long value) {
-        return new Date(value);
+    public LocalDateTime fromLong(String value) {
+        return LocalDateTime.parse(value);
     }
 
     @TypeConverter
-    public long toLong(Date date) {
-        return date.getTime();
+    public String toLong(LocalDateTime date) {
+        return date.toString();
     }
 }
