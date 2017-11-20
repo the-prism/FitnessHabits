@@ -12,12 +12,12 @@ import java.util.Date;
 
 public class DateConverter {
     @TypeConverter
-    public LocalDateTime fromLong(String value) {
+    public LocalDateTime fromString(String value) {
         return LocalDateTime.parse(value);
     }
 
     @TypeConverter
-    public String toLong(LocalDateTime date) {
+    public String toString(LocalDateTime date) {
         return date.toString();
     }
 }
