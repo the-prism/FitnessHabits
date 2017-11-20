@@ -10,12 +10,18 @@
     tools:context="com.strudelauxpommes.androidcomponents.demo.view_team.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <Button
+        android:id="@+id/mainWeightButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Poid" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/background_color"
-        android:theme="@style/AppTheme.LightText"
-        />
+        android:theme="@style/AppTheme.LightText" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

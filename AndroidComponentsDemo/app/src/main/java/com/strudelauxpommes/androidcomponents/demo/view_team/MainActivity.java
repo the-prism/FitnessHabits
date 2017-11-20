@@ -25,20 +25,22 @@ import com.strudelauxpommes.androidcomponents.demo.R;
 public class MainActivity extends AppCompatActivity {
 
     private FormViewModel viewModel;
+    Button blueButton;
+    Button orangeButton;
+    Button purpleButton;
+    View container;
+    Toolbar toolbar;
+    NumberPicker buttonTextSizePicker;
+    Button weightButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        // Step 1: Get our views references
-        Button blueButton = findViewById(R.id.blueButton);
-        Button orangeButton = findViewById(R.id.orangeButton);
-        Button purpleButton = findViewById(R.id.purpleButton);
-        View container = findViewById(R.id.container);
-        NumberPicker buttonTextSizePicker = findViewById(R.id.buttonTextSizePicker);
+        initReferences();
+
+        setSupportActionBar(toolbar);
 
         // Step 2: Initialize the views if needed. This initialization should be data independant.
         // Initialize spinner
@@ -72,17 +74,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        bindButtons();
+
+    }
+
+    void initReferences() {
+        blueButton = findViewById(R.id.blueButton);
+        orangeButton = findViewById(R.id.orangeButton);
+        purpleButton = findViewById(R.id.purpleButton);
+        container = findViewById(R.id.container);
+        toolbar = findViewById(R.id.toolbar);
+
+        weightButton = findViewById(R.id.mainWeightButton);
+
+        buttonTextSizePicker = findViewById(R.id.buttonTextSizePicker);
+    }
+
+    void bindButtons() {
+
         // Step 5: Bind the UI events to the ViewModel
         // Initialize the actions of the UI. These actions should only modify the viewModel.
         // The viewModel contains the logic for the update and the view will be refreshed automatically.
-        blueButton.setOnClickListener(button ->
-                viewModel.setBackgroundColor(FormViewModel.BackgroundColor.blue));
-        orangeButton.setOnClickListener(button ->
-                viewModel.setBackgroundColor(FormViewModel.BackgroundColor.orange));
-        purpleButton.setOnClickListener(button ->
-                viewModel.setBackgroundColor(FormViewModel.BackgroundColor.purple));
-        buttonTextSizePicker.setOnValueChangedListener((numberPicker, oldFontSize, newFontSize) ->
-                viewModel.setFontSize(newFontSize));
+        blueButton.setOnClickListener(button -> viewModel.setBackgroundColor(FormViewModel.BackgroundColor.blue));
+        orangeButton.setOnClickListener(button -> viewModel.setBackgroundColor(FormViewModel.BackgroundColor.orange));
+        purpleButton.setOnClickListener(button -> viewModel.setBackgroundColor(FormViewModel.BackgroundColor.purple));
+        buttonTextSizePicker.setOnValueChangedListener((numberPicker, oldFontSize, newFontSize) -> viewModel.setFontSize(newFontSize));
+
+        weightButton.setOnClickListener(button -> viewModel.onWeightButton(button));
+
     }
+
+
+
+
+
+
+
 
 }
