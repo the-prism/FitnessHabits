@@ -8,14 +8,19 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
+import com.strudelauxpommes.androidcomponents.demo.AlcoolActivity;
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 import com.strudelauxpommes.androidcomponents.demo.data_team.AppDatabase;
 import com.strudelauxpommes.androidcomponents.demo.view_team.FormViewModel;
@@ -31,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
     View container;
     Toolbar toolbar;
     NumberPicker buttonTextSizePicker;
+
     Button weightButton;
+    Button alcoolButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         container = findViewById(R.id.container);
         toolbar = findViewById(R.id.toolbar);
 
+        alcoolButton = findViewById(R.id.mainAlcoolButtonId);
         weightButton = findViewById(R.id.mainWeightButton);
 
         buttonTextSizePicker = findViewById(R.id.buttonTextSizePicker);
@@ -100,7 +109,13 @@ public class MainActivity extends AppCompatActivity {
         purpleButton.setOnClickListener(button -> viewModel.setBackgroundColor(FormViewModel.BackgroundColor.purple));
         buttonTextSizePicker.setOnValueChangedListener((numberPicker, oldFontSize, newFontSize) -> viewModel.setFontSize(newFontSize));
 
+
+
         weightButton.setOnClickListener(button -> viewModel.onWeightButton(button));
+        alcoolButton.setOnClickListener(button -> viewModel.onAlcoolButton(button));
+
+
+
 
     }
 

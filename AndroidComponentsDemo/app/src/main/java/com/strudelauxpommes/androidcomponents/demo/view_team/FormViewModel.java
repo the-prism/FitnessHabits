@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.annotation.ColorRes;
 import android.view.View;
 
+import com.strudelauxpommes.androidcomponents.demo.AlcoolActivity;
 import com.strudelauxpommes.androidcomponents.demo.WeightActivity;
 import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
 import com.strudelauxpommes.androidcomponents.demo.data_team.model.UIData;
@@ -29,6 +30,11 @@ public class FormViewModel extends ViewModel {
         context.startActivity(intent);
     }
 
+    public void onAlcoolButton(View button) {
+        Context context = button.getContext();
+        Intent intent = new Intent(context, AlcoolActivity.class);
+        context.startActivity(intent);
+    }
 
 
     public enum BackgroundColor {

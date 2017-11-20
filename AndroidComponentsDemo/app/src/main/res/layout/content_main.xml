@@ -11,6 +11,12 @@
     tools:showIn="@layout/activity_main">
 
     <Button
+        android:id="@+id/mainAlcoolButtonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alcool" />
+
+    <Button
         android:id="@+id/mainWeightButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
