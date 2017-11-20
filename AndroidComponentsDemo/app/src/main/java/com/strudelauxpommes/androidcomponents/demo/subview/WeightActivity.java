@@ -1,4 +1,4 @@
-package com.strudelauxpommes.androidcomponents.demo.com.strudelauxpommes.androidcomponents.demo.subview;
+package com.strudelauxpommes.androidcomponents.demo.subview;
 
 
 import android.os.Bundle;

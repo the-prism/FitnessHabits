@@ -8,8 +8,8 @@ import android.content.Intent;
 import android.support.annotation.ColorRes;
 import android.view.View;
 
-import com.strudelauxpommes.androidcomponents.demo.com.strudelauxpommes.androidcomponents.demo.subview.AlcoolActivity;
-import com.strudelauxpommes.androidcomponents.demo.com.strudelauxpommes.androidcomponents.demo.subview.WeightActivity;
+import com.strudelauxpommes.androidcomponents.demo.subview.AlcoolActivity;
+import com.strudelauxpommes.androidcomponents.demo.subview.WeightActivity;
 import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
 import com.strudelauxpommes.androidcomponents.demo.data_team.model.UIData;
 
