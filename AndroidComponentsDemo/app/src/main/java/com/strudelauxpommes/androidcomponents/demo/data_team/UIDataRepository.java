@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.UIData;
-import com.strudelauxpommes.androidcomponents.demo.view_team.FormViewModel;
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.*;
+import com.strudelauxpommes.androidcomponents.demo.view_team.*;
 
 /**
  * A Repository is used to combine one or several data source. The Repository is agnostic of it's
@@ -20,10 +20,13 @@ import com.strudelauxpommes.androidcomponents.demo.view_team.FormViewModel;
  * Created by Marc-Antoine Sauvé on 11/11/17.
  */
 public class UIDataRepository {
-    private UIDataDao uiDataDao;
 
-    public UIDataRepository(UIDataDao uiDataDao) {
+    private UIDataDao uiDataDao;
+    private WeightRecordDao weightRecordDao;
+
+    public UIDataRepository(UIDataDao uiDataDao, WeightRecordDao weightRecordDao) {
         this.uiDataDao = uiDataDao;
+        this.weightRecordDao = weightRecordDao;
     }
 
     public LiveData<UIData> loadUIData() {
@@ -50,4 +53,35 @@ public class UIDataRepository {
             }
         }.execute();
     }
+
+
+
+
+
+
+    @SuppressLint("StaticFieldLeak")
+    @MainThread
+    public void saveWeightRecord(WeightRecord record) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                weightRecordDao.insertOrReplaceWeightRecord(record);
+                return null;
+            }
+        }.execute();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

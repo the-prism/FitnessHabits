@@ -18,6 +18,7 @@ import java.util.Date;
  */
 @Entity(primaryKeys = {"date","activite"})
 public class ActiviteData {
+
     @TypeConverters({DateConverter.class})
     @NonNull
     private LocalDateTime date;
@@ -48,4 +49,6 @@ public class ActiviteData {
     public void setIntensite(int intensite) {
         this.intensite = intensite;
     }
+
 }
+

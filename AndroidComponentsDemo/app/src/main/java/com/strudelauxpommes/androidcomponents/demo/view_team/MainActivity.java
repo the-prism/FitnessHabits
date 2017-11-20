@@ -17,7 +17,8 @@ import com.strudelauxpommes.androidcomponents.demo.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FormViewModel viewModel;
+    public FormViewModel viewModel;
+
     Button blueButton;
     Button orangeButton;
     Button purpleButton;
@@ -99,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        weightButton.setOnClickListener(button -> viewModel.onWeightButton(button));
-        alcoolButton.setOnClickListener(button -> viewModel.onAlcoolButton(button));
+        weightButton.setOnClickListener(button -> viewModel.onWeightButton(this, button));
+        alcoolButton.setOnClickListener(button -> viewModel.onAlcoolButton(this, button));
 
 
 

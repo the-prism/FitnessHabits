@@ -22,7 +22,7 @@ public class DemoApplication extends Application {
     @MainThread
     public AppDatabase getDatabase() {
         if (database == null) {
-            database = Room.databaseBuilder(this, AppDatabase.class, "demo-database").build();
+            database = Room.databaseBuilder(this, AppDatabase.class, "demo-database").fallbackToDestructiveMigration().build();
         }
         return database;
     }
@@ -30,7 +30,7 @@ public class DemoApplication extends Application {
     @MainThread
     public UIDataRepository getUIDataRepository() {
         if (uiDataRepository == null) {
-            uiDataRepository = new UIDataRepository(getDatabase().userDao());
+            uiDataRepository = new UIDataRepository(getDatabase().userDao(), getDatabase().weightDao());
         }
         return uiDataRepository;
     }

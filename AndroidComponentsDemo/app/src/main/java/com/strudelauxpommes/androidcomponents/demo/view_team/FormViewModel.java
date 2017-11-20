@@ -6,8 +6,11 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.ColorRes;
+import android.util.Log;
 import android.view.View;
 
+import com.strudelauxpommes.androidcomponents.demo.data_team.CalendarDate;
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.WeightRecord;
 import com.strudelauxpommes.androidcomponents.demo.subview.AlcoolActivity;
 import com.strudelauxpommes.androidcomponents.demo.subview.WeightActivity;
 import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
@@ -20,22 +23,41 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.model.UIData;
  *
  * Created by Marc-Antoine Sauvé on 11/11/17.
  */
+
+/*
+Fabrice: Est-ce qu'on a un ViewModel pour CHAQUE activité/view (page détaillé pour alcool, sommeil, etc.)?
+ */
+
 public class FormViewModel extends ViewModel {
 
+    // ==============================================================================
 
-
-    public void onWeightButton(View button) {
+    public void onWeightButton(MainActivity main_activity, View button) {
         Context context = button.getContext();
         Intent intent = new Intent(context, WeightActivity.class);
-        context.startActivity(intent);
+        main_activity.startActivityForResult(intent, 0);
     }
 
-    public void onAlcoolButton(View button) {
+    public void onAlcoolButton(MainActivity main_activity, View button) {
         Context context = button.getContext();
         Intent intent = new Intent(context, AlcoolActivity.class);
-        context.startActivity(intent);
+        main_activity.startActivityForResult(intent, 0);
     }
 
+    public void saveWeight(float weight) {
+
+        WeightRecord record = new WeightRecord();
+        record.date = CalendarDate.now();
+        record.weight = weight;
+
+        repository.saveWeightRecord(record);
+
+        Log.d("foo", "save w " + weight);
+
+
+    }
+
+    // ==============================================================================
 
     public enum BackgroundColor {
         blue(android.R.color.holo_blue_bright),
@@ -85,6 +107,7 @@ public class FormViewModel extends ViewModel {
 
     public void setBackgroundColor(BackgroundColor backgroundColor) {
         UIData currentUIData = uiDataLiveData.getValue();
+        // pourquoi "currentUIData" pourrait être "null"?
         if (currentUIData != null) {
             currentUIData.setBackgroundColor(backgroundColor);
             repository.saveUIData(currentUIData);

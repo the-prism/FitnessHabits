@@ -6,20 +6,35 @@
     android:layout_height="match_parent"
     tools:context="com.strudelauxpommes.androidcomponents.demo.subview.WeightActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Poid"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="33dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/weightInputId"
-        android:layout_width="wrap_content"
-        android:layout_height="62dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="97dp" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Poid"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="33dp" />
+
+        <EditText
+            android:id="@+id/weightInputId"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="159dp" />
+
+        <Button
+            android:id="@+id/weightSaveButtonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="266dp" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
