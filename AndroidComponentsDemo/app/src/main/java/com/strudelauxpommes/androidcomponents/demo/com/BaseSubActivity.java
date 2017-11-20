@@ -1,4 +1,4 @@
-package com.strudelauxpommes.androidcomponents.demo;
+package com.strudelauxpommes.androidcomponents.demo.com.strudelauxpommes.androidcomponents.demo.subview;
 
 import android.support.v7.app.AppCompatActivity;
 

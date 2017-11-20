@@ -1,4 +1,4 @@
-package com.strudelauxpommes.androidcomponents.demo;
+package com.strudelauxpommes.androidcomponents.demo.com.strudelauxpommes.androidcomponents.demo.subview;
 
 
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
+
+import com.strudelauxpommes.androidcomponents.demo.R;
 
 public class WeightActivity extends BaseSubActivity {
 
@@ -19,7 +21,7 @@ public class WeightActivity extends BaseSubActivity {
     }
 
 
-    
+
     void initReferences() {
         weightInput = findViewById(R.id.weightInputId);
 

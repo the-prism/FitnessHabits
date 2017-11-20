@@ -1,6 +1,8 @@
-package com.strudelauxpommes.androidcomponents.demo;
+package com.strudelauxpommes.androidcomponents.demo.com.strudelauxpommes.androidcomponents.demo.subview;
 
 import android.os.Bundle;
+
+import com.strudelauxpommes.androidcomponents.demo.R;
 
 
 public class AlcoolActivity extends BaseSubActivity {

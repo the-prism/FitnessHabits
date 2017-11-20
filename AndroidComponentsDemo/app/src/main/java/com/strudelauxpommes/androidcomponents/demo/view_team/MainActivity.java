@@ -3,27 +3,15 @@ package com.strudelauxpommes.androidcomponents.demo.view_team;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
-import com.strudelauxpommes.androidcomponents.demo.AlcoolActivity;
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
-import com.strudelauxpommes.androidcomponents.demo.data_team.AppDatabase;
-import com.strudelauxpommes.androidcomponents.demo.view_team.FormViewModel;
 
 import com.strudelauxpommes.androidcomponents.demo.R;
 
