@@ -10,6 +10,16 @@
     tools:context="com.strudelauxpommes.androidcomponents.demo.view_team.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/mainAlcoolButtonId"
         android:layout_width="match_parent"
@@ -21,6 +31,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Poid" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prefs" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,11 +76,10 @@
 
     <NumberPicker
         android:id="@+id/buttonTextSizePicker"
-        android:layout_width="wrap_content"
+        android:layout_width="52dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:theme="@style/AppTheme.LightText"
-        />
+        android:theme="@style/AppTheme.LightText" />
 
 </LinearLayout>

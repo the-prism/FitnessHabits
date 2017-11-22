@@ -7,6 +7,7 @@ import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
 import com.strudelauxpommes.androidcomponents.demo.data_team.model.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.pref.*;
 import com.strudelauxpommes.androidcomponents.demo.view_team.*;
 
 /**
@@ -19,14 +20,23 @@ import com.strudelauxpommes.androidcomponents.demo.view_team.*;
  *
  * Created by Marc-Antoine Sauvé on 11/11/17.
  */
-public class UIDataRepository {
+public class UIDataRepository extends BaseModelObject {
 
     private UIDataDao uiDataDao;
     private WeightRecordDao weightRecordDao;
+    PreferenceManager prefManager;
+
+
+
 
     public UIDataRepository(UIDataDao uiDataDao, WeightRecordDao weightRecordDao) {
         this.uiDataDao = uiDataDao;
         this.weightRecordDao = weightRecordDao;
+        this.prefManager = new PreferenceManager();
+
+        print((String)prefManager.getPref("pref.user.name"));
+
+
     }
 
     public LiveData<UIData> loadUIData() {
@@ -70,6 +80,32 @@ public class UIDataRepository {
             }
         }.execute();
     }
+
+
+
+    public Object getPref(String name) {
+        return prefManager.getPref(name);
+    }
+
+    public void setPref(String name, Object value) {
+        prefManager.setPref(name, value);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
