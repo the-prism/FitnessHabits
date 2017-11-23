@@ -16,9 +16,11 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.model.UIData;
 
 @Dao
 public interface UIDataDao {
+
     @Query("SELECT * FROM UIData LIMIT 1")
     LiveData<UIData> getUIData();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOrReplaceUIData(UIData uiData);
+
 }

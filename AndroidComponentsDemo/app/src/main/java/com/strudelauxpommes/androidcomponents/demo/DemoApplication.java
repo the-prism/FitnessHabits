@@ -30,7 +30,7 @@ public class DemoApplication extends Application {
     @MainThread
     public UIDataRepository getUIDataRepository() {
         if (uiDataRepository == null) {
-            uiDataRepository = new UIDataRepository(getDatabase().userDao(), getDatabase().weightDao());
+            uiDataRepository = new UIDataRepository(getDatabase().userDao(), getDatabase().weightDao(), getDatabase().prefRecordDao());
         }
         return uiDataRepository;
     }

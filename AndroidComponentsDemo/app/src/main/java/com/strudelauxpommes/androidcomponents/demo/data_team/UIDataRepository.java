@@ -6,9 +6,11 @@ import android.os.AsyncTask;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
+import com.strudelauxpommes.androidcomponents.demo.view_team.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.model.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.model.pref.*;
-import com.strudelauxpommes.androidcomponents.demo.view_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.record.*;
+
 
 /**
  * A Repository is used to combine one or several data source. The Repository is agnostic of it's
@@ -24,20 +26,28 @@ public class UIDataRepository extends BaseModelObject {
 
     private UIDataDao uiDataDao;
     private WeightRecordDao weightRecordDao;
+    private PrefRecordDao prefRecordDao;
+
     PreferenceManager prefManager;
 
 
 
-
-    public UIDataRepository(UIDataDao uiDataDao, WeightRecordDao weightRecordDao) {
+    public UIDataRepository(UIDataDao uiDataDao, WeightRecordDao weightRecordDa, PrefRecordDao prefRecordDao) {
         this.uiDataDao = uiDataDao;
         this.weightRecordDao = weightRecordDao;
+        this.prefRecordDao = prefRecordDao;
+
         this.prefManager = new PreferenceManager();
+
 
         print((String)prefManager.getPref("pref.user.name"));
 
-
     }
+
+
+
+
+
 
     public LiveData<UIData> loadUIData() {
         UIData defaultUIData = new UIData();
@@ -63,6 +73,26 @@ public class UIDataRepository extends BaseModelObject {
             }
         }.execute();
     }
+
+
+
+
+    @SuppressLint("StaticFieldLeak")
+    @MainThread
+    public void savePrefRecord(PrefRecord record) {
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                prefRecordDao.insertOrReplacePrefRecord(record);
+                return null;
+            }
+        }.execute();
+
+
+    }
+
+
 
 
 
@@ -95,6 +125,22 @@ public class UIDataRepository extends BaseModelObject {
 
 
 
+    public LiveData<PrefRecord> loadUserNamePrefRecordLiveData() {
+
+        PrefRecord defaultPrefRecord = new PrefRecord();
+        defaultPrefRecord.setValue("");
+
+        return new DatabaseResource<PrefRecord>(defaultPrefRecord) {
+            @NonNull
+            @Override
+            protected LiveData<PrefRecord> loadFromDb() {
+                return prefRecordDao.getPrefRecord("pref.user.name");
+            }
+        }.getAsLiveData();
+
+
+
+    }
 
 
 
@@ -105,18 +151,9 @@ public class UIDataRepository extends BaseModelObject {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    public LiveData<PrefsData> loadPrefsLiveData() {
+        return null;
+    }
 
 
 
