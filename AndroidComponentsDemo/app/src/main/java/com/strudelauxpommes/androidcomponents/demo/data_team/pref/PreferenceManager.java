@@ -14,7 +14,7 @@ import java.util.Map;
 public class PreferenceManager extends BaseModelObject {
 
     List<BasePreference> prefs;
-    Map<String, BasePreference> prefByName;
+    public Map<String, BasePreference> prefByName;
 
     public PreferenceManager() {
         initAllInstances();

@@ -20,6 +20,12 @@
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/showTailleTextId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +73,7 @@
                 android:text="Taille" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/prefTailleTextId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -75,7 +81,7 @@
                 android:inputType="numberDecimal" />
 
             <Button
-                android:id="@+id/prefWeightSaveButId"
+                android:id="@+id/prefHeightSaveButId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

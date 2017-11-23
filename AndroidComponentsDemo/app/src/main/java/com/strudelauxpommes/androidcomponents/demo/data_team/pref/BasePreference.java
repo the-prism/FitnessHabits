@@ -23,7 +23,7 @@ public abstract class BasePreference extends BaseModelObject {
     public static List<BasePreference> getAllInstances() {
         return new ArrayList<BasePreference>(Arrays.asList(
                 new BasePreference.PrefUserName(),
-                new BasePreference.PrefUserWeight(),
+                new BasePreference.PrefUserHeight(),
                 new BasePreference.PrefUserBirthDate(),
                 new BasePreference.PrefUserGender(),
                 new BasePreference.PrefHeightUnit(),
@@ -44,6 +44,9 @@ public abstract class BasePreference extends BaseModelObject {
     public abstract String name();
 
 
+    public Object parseFromString(String value) {
+        return value;
+    }
 
     // =======================================================
 
@@ -57,10 +60,17 @@ public abstract class BasePreference extends BaseModelObject {
 
     }
 
-    public static class PrefUserWeight extends BasePreference {
+    public static class PrefUserHeight extends BasePreference {
 
         public String name() {
-            return "pref.user.weight";
+            return "pref.user.height";
+        }
+
+        public Object parseFromString(String value) {
+            if(value.equals("")) {
+                return 0F;
+            }
+            return Float.parseFloat(value);
         }
 
     }

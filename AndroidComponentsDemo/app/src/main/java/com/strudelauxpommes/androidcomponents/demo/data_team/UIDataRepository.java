@@ -113,6 +113,8 @@ public class UIDataRepository extends BaseModelObject {
     }
 
 
+    // ====================================================================================
+
 
     public Object getPref(String name) {
         return prefManager.getPref(name);
@@ -126,35 +128,62 @@ public class UIDataRepository extends BaseModelObject {
 
 
 
-    public LiveData<PrefRecord> loadUserNamePrefRecordLiveData() {
+    public LiveData<PrefRecord> loadPrefRecordLiveData(String name) {
 
         PrefRecord defaultPrefRecord = new PrefRecord();
+        defaultPrefRecord.name = name;
         defaultPrefRecord.setValue("");
 
         return new DatabaseResource<PrefRecord>(defaultPrefRecord) {
             @NonNull
             @Override
             protected LiveData<PrefRecord> loadFromDb() {
-                return prefRecordDao.getPrefRecord("pref.user.name");
+                return prefRecordDao.getPrefRecord(name);
             }
         }.getAsLiveData();
 
-
-
     }
-
-
-
-
-
-
-
-
 
 
     public LiveData<PrefsData> loadPrefsLiveData() {
         return null;
     }
+
+
+
+    public PreferenceInstance getPreferenceInstance(String name) {
+        LiveData<PrefRecord> userNamePrefRecord;
+        userNamePrefRecord = this.loadPrefRecordLiveData(name);
+
+        return new PreferenceInstance<>(this, prefManager.prefByName.get(name), userNamePrefRecord);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
