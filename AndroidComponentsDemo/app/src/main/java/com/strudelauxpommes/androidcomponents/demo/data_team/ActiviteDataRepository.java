@@ -3,7 +3,9 @@ package com.strudelauxpommes.androidcomponents.demo.data_team;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.ActiviteData;
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -1,7 +1,10 @@
-package com.strudelauxpommes.androidcomponents.demo.data_team.model.pref;
+package com.strudelauxpommes.androidcomponents.demo.data_team.pref;
 
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
+
 
 import java.util.HashMap;
 import java.util.List;

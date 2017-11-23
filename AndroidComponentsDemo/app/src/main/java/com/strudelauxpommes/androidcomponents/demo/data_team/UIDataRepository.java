@@ -7,9 +7,10 @@ import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
 import com.strudelauxpommes.androidcomponents.demo.view_team.*;
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.*;
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.pref.*;
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.record.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.pref.*;
 
 
 /**

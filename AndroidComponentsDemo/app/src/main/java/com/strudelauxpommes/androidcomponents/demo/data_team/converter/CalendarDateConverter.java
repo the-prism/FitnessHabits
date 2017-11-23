@@ -2,7 +2,10 @@ package com.strudelauxpommes.androidcomponents.demo.data_team.converter;
 
 import android.arch.persistence.room.TypeConverter;
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.CalendarDate;
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
+
 
 
 public class CalendarDateConverter {

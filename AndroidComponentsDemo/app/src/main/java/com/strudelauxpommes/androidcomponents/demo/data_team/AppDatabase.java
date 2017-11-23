@@ -4,9 +4,10 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.converter.*;
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.record.*;
 
 /**
  * Define which entities should be stored in the database and define converters to transform some

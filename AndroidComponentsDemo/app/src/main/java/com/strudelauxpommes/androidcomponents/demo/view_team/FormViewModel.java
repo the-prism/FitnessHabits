@@ -9,11 +9,12 @@ import android.support.annotation.ColorRes;
 import android.util.Log;
 import android.view.View;
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.CalendarDate;
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.WeightRecord;
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 import com.strudelauxpommes.androidcomponents.demo.subview.*;
-import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
-import com.strudelauxpommes.androidcomponents.demo.data_team.model.UIData;
+
+
 
 /**
  * A ViewModel to hold the information and actions required by a view. It's the abstraction that

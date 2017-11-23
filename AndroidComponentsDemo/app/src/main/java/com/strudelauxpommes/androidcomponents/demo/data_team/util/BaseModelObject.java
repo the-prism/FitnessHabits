@@ -1,4 +1,4 @@
-package com.strudelauxpommes.androidcomponents.demo.data_team.model;
+package com.strudelauxpommes.androidcomponents.demo.data_team.util;
 
 
 import android.util.Log;
