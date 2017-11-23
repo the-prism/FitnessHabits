@@ -18,24 +18,34 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="302dp" />
 
-    <Button
-        android:id="@+id/mainAlcoolButtonId"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Alcool" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/mainWeightButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Poid" />
+        <Button
+            android:id="@+id/mainAlcoolButtonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alcool" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Prefs" />
+        <Button
+            android:id="@+id/mainWeightButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Poids" />
+
+        <Button
+            android:id="@+id/mainPrefsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Prefs" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"

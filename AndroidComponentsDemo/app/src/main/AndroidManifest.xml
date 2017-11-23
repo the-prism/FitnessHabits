@@ -20,8 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.strudelauxpommes.androidcomponents.demo.subview.WeightActivity" />
-        <activity android:name="com.strudelauxpommes.androidcomponents.demo.subview.AlcoolActivity"></activity>
+        <activity android:name=".subview.WeightActivity" />
+        <activity android:name=".subview.AlcoolActivity" />
+        <activity android:name=".subview.PrefActivity"></activity>
     </application>
 
 </manifest>

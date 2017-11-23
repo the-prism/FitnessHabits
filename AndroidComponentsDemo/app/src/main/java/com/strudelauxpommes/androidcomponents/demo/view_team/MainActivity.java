@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button weightButton;
     Button alcoolButton;
+    Button prefButton;
 
 
     @Override
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         alcoolButton = findViewById(R.id.mainAlcoolButtonId);
         weightButton = findViewById(R.id.mainWeightButton);
+        prefButton = findViewById(R.id.mainPrefsButton);
 
         buttonTextSizePicker = findViewById(R.id.buttonTextSizePicker);
     }
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
         weightButton.setOnClickListener(button -> viewModel.onWeightButton(this, button));
         alcoolButton.setOnClickListener(button -> viewModel.onAlcoolButton(this, button));
-
+        prefButton.setOnClickListener(button -> viewModel.onPrefButton(this, button));
 
 
 

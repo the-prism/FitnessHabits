@@ -11,8 +11,7 @@ import android.view.View;
 
 import com.strudelauxpommes.androidcomponents.demo.data_team.CalendarDate;
 import com.strudelauxpommes.androidcomponents.demo.data_team.model.WeightRecord;
-import com.strudelauxpommes.androidcomponents.demo.subview.AlcoolActivity;
-import com.strudelauxpommes.androidcomponents.demo.subview.WeightActivity;
+import com.strudelauxpommes.androidcomponents.demo.subview.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
 import com.strudelauxpommes.androidcomponents.demo.data_team.model.UIData;
 
@@ -43,6 +42,17 @@ public class FormViewModel extends ViewModel {
         Intent intent = new Intent(context, AlcoolActivity.class);
         main_activity.startActivityForResult(intent, 0);
     }
+
+
+
+    public void onPrefButton(MainActivity main_activity, View button) {
+        Context context = button.getContext();
+        Intent intent = new Intent(context, PrefActivity.class);
+        main_activity.startActivityForResult(intent, 0);
+    }
+
+
+
 
     public void saveWeight(float weight) {
 
