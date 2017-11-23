@@ -46,6 +46,23 @@ public class UIDataRepository extends BaseModelObject {
 
 
 
+    public LiveData<WeightRecord> loadWeightRecordLiveData(CalendarDate date) {
+
+        WeightRecord defaultRecord = new WeightRecord();
+        defaultRecord.date = date;
+        defaultRecord.weight = null;
+
+        return new DatabaseResource<WeightRecord>(defaultRecord) {
+            @NonNull
+            @Override
+            protected LiveData<WeightRecord> loadFromDb() {
+                return weightRecordDao.searchWeightRecord(date);
+            }
+        }.getAsLiveData();
+
+
+    }
+
 
 
     public LiveData<UIData> loadUIData() {
@@ -138,33 +155,6 @@ public class UIDataRepository extends BaseModelObject {
     public PreferenceInstance getPreferenceInstance(String name) {
         return prefManager.prefByName.get(name).getPreferenceInstance();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

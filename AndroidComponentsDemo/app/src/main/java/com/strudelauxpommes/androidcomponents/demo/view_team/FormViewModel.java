@@ -62,7 +62,7 @@ public class FormViewModel extends ViewModel {
 
         Log.d("weightForCurrentDate date:", date.toDatabaseString());
 
-        return new RecordInstance(repository, date);
+        return new RecordInstance(repository, date, repository.loadWeightRecordLiveData(date));
 
     }
 

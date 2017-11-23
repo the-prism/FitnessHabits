@@ -17,4 +17,8 @@ public interface WeightRecordDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOrReplaceWeightRecord(WeightRecord record);
 
+
+    @Query("SELECT * FROM WeightRecord WHERE date == :date LIMIT 1")
+    LiveData<WeightRecord> searchWeightRecord(CalendarDate date);
+
 }

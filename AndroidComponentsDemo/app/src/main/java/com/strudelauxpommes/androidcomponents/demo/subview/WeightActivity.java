@@ -1,6 +1,7 @@
 package com.strudelauxpommes.androidcomponents.demo.subview;
 
 
+
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,6 +23,7 @@ public class WeightActivity extends BaseSubActivity {
     Button saveButton;
     public FormViewModel viewModel;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +36,11 @@ public class WeightActivity extends BaseSubActivity {
         weightInput = findViewById(R.id.weightInputId);
         saveButton = findViewById(R.id.weightSaveButtonId);
 
-
         viewModel = ViewModelProviders.of(this).get(FormViewModel.class);
         viewModel.init(DemoApplication.application.getUIDataRepository());
 
         saveButton.setOnClickListener(button -> onSaveButton());
-
+        viewModel.weightForCurrentDate().liveData().observe(this, weight -> weightInput.setText(weight.toString()));
 
     }
 
@@ -48,6 +49,30 @@ public class WeightActivity extends BaseSubActivity {
         float weight = Float.parseFloat(weightInput.getText().toString());
         viewModel.weightForCurrentDate().setValue(weight);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
