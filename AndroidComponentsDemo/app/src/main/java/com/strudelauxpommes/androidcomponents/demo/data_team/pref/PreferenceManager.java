@@ -15,8 +15,10 @@ public class PreferenceManager extends BaseModelObject {
 
     List<BasePreference> prefs;
     public Map<String, BasePreference> prefByName;
+    public UIDataRepository repository;
 
-    public PreferenceManager() {
+    public PreferenceManager(UIDataRepository repository) {
+        this.repository = repository;
         initAllInstances();
     }
 

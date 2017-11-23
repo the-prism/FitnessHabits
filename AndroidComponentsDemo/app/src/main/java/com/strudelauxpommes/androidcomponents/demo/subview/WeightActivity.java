@@ -14,6 +14,8 @@ import com.strudelauxpommes.androidcomponents.demo.R;
 import com.strudelauxpommes.androidcomponents.demo.view_team.*;
 
 
+
+
 public class WeightActivity extends BaseSubActivity {
 
     EditText weightInput;
@@ -27,11 +29,6 @@ public class WeightActivity extends BaseSubActivity {
         initReferences();
     }
 
-    void onSaveButton() {
-        float weight = Float.parseFloat(weightInput.getText().toString());
-        viewModel.saveWeight(weight);
-    }
-
 
     void initReferences() {
         weightInput = findViewById(R.id.weightInputId);
@@ -41,21 +38,18 @@ public class WeightActivity extends BaseSubActivity {
         viewModel = ViewModelProviders.of(this).get(FormViewModel.class);
         viewModel.init(DemoApplication.application.getUIDataRepository());
 
-
         saveButton.setOnClickListener(button -> onSaveButton());
 
-
-        // je crois que c'est mieux de ne pas stocker en temps réel...
-        weightInput.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {}
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-        });
 
     }
 
 
+    void onSaveButton() {
+        float weight = Float.parseFloat(weightInput.getText().toString());
+        viewModel.weightForCurrentDate().setValue(weight);
+    }
 
 
 
 }
+

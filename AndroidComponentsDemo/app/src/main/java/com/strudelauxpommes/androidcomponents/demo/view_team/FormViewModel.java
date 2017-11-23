@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.pref.PreferenceInstance;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 import com.strudelauxpommes.androidcomponents.demo.subview.*;
@@ -55,18 +56,16 @@ public class FormViewModel extends ViewModel {
 
 
 
-    public void saveWeight(float weight) {
 
-        WeightRecord record = new WeightRecord();
-        record.date = CalendarDate.now();
-        record.weight = weight;
+    public RecordInstance weightForCurrentDate() {
+        CalendarDate date = currentViewDate().liveData().getValue();
 
-        repository.saveWeightRecord(record);
+        Log.d("weightForCurrentDate date:", date.toDatabaseString());
 
-        Log.d("foo", "save w " + weight);
-
+        return new RecordInstance(repository, date);
 
     }
+
 
 
 
@@ -87,6 +86,9 @@ public class FormViewModel extends ViewModel {
             return color;
         }
     }
+
+
+
 
     // Data layer
     private UIDataRepository repository;
@@ -134,4 +136,11 @@ public class FormViewModel extends ViewModel {
             repository.saveUIData(currentUIData);
         }
     }
+
+
+    public PreferenceInstance<CalendarDate> currentViewDate() {
+        return this.repository.getPreferenceInstance("pref.tmp.current_view_date");
+    }
+
+
 }

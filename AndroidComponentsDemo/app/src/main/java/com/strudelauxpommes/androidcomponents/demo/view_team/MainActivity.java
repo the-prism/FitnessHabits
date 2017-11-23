@@ -6,14 +6,18 @@ import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.NumberPicker;
 
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 
 import com.strudelauxpommes.androidcomponents.demo.R;
+import com.strudelauxpommes.androidcomponents.demo.data_team.pref.PreferenceInstance;
+import com.strudelauxpommes.androidcomponents.demo.data_team.util.CalendarDate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     Button weightButton;
     Button alcoolButton;
     Button prefButton;
+
+    CalendarView calendar;
 
 
     @Override
@@ -88,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
         prefButton = findViewById(R.id.mainPrefsButton);
 
         buttonTextSizePicker = findViewById(R.id.buttonTextSizePicker);
+
+        calendar = findViewById(R.id.mainCalendarViewId);
+
     }
 
     void bindButtons() {
@@ -101,14 +110,37 @@ public class MainActivity extends AppCompatActivity {
         buttonTextSizePicker.setOnValueChangedListener((numberPicker, oldFontSize, newFontSize) -> viewModel.setFontSize(newFontSize));
 
 
-
         weightButton.setOnClickListener(button -> viewModel.onWeightButton(this, button));
         alcoolButton.setOnClickListener(button -> viewModel.onAlcoolButton(this, button));
         prefButton.setOnClickListener(button -> viewModel.onPrefButton(this, button));
 
 
 
+
+        calendar.setOnDateChangeListener((calendar, year, month, day) -> onDateChange(year, month, day));
+        viewModel.currentViewDate().liveData().observe(this, value -> calendar.setDate(value.getTimeInMillis()));
+
     }
+
+    private void onDateChange(int year, int month, int day) {
+        CalendarDate date = CalendarDate.fromYearMonthDay(year, month, day);
+        viewModel.currentViewDate().setValue(date);
+        Log.d("foo", "onDateChange " + date.toDatabaseString());
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

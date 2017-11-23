@@ -25,23 +25,21 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.pref.*;
  */
 public class UIDataRepository extends BaseModelObject {
 
-    private UIDataDao uiDataDao;
-    private WeightRecordDao weightRecordDao;
-    private PrefRecordDao prefRecordDao;
+    public UIDataDao uiDataDao;
+    public WeightRecordDao weightRecordDao;
+    public PrefRecordDao prefRecordDao;
 
     PreferenceManager prefManager;
 
 
 
-    public UIDataRepository(UIDataDao uiDataDao, WeightRecordDao weightRecordDa, PrefRecordDao prefRecordDao) {
+    public UIDataRepository(UIDataDao uiDataDao, WeightRecordDao weightRecordDao, PrefRecordDao prefRecordDao) {
         this.uiDataDao = uiDataDao;
         this.weightRecordDao = weightRecordDao;
         this.prefRecordDao = prefRecordDao;
 
-        this.prefManager = new PreferenceManager();
+        this.prefManager = new PreferenceManager(this);
 
-
-        print((String)prefManager.getPref("pref.user.name"));
 
     }
 
@@ -128,21 +126,7 @@ public class UIDataRepository extends BaseModelObject {
 
 
 
-    public LiveData<PrefRecord> loadPrefRecordLiveData(String name) {
 
-        PrefRecord defaultPrefRecord = new PrefRecord();
-        defaultPrefRecord.name = name;
-        defaultPrefRecord.setValue("");
-
-        return new DatabaseResource<PrefRecord>(defaultPrefRecord) {
-            @NonNull
-            @Override
-            protected LiveData<PrefRecord> loadFromDb() {
-                return prefRecordDao.getPrefRecord(name);
-            }
-        }.getAsLiveData();
-
-    }
 
 
     public LiveData<PrefsData> loadPrefsLiveData() {
@@ -152,10 +136,7 @@ public class UIDataRepository extends BaseModelObject {
 
 
     public PreferenceInstance getPreferenceInstance(String name) {
-        LiveData<PrefRecord> userNamePrefRecord;
-        userNamePrefRecord = this.loadPrefRecordLiveData(name);
-
-        return new PreferenceInstance<>(this, prefManager.prefByName.get(name), userNamePrefRecord);
+        return prefManager.prefByName.get(name).getPreferenceInstance();
     }
 
 
