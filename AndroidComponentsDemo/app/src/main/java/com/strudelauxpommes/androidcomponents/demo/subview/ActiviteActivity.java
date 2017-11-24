@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 import com.strudelauxpommes.androidcomponents.demo.R;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategory;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
 import com.strudelauxpommes.androidcomponents.demo.view_team.ActiviteViewModel;
 
@@ -23,7 +24,7 @@ public class ActiviteActivity extends BaseSubActivity {
     ListView listView;
     ActiviteViewModel viewModel;
     LiveData<String> listActi;
-    String[] values = new String[] { "BOB" };
+    String[] values = new String[]{"BOB"};
     ArrayAdapter<String> adapter;
 
     LiveData<String> getListOfActivites() {
@@ -61,6 +62,10 @@ public class ActiviteActivity extends BaseSubActivity {
                 newObjt.setDate("TODAY");
                 newObjt.setIntensite(2);
                 viewModel.insertItem(newObjt);
+                ActiviteCategory mewCat = new ActiviteCategory();
+                mewCat.setId(3); //For tests, else we get a new 1 each time (desired behaviour from ui)
+                mewCat.setName("Test 3");
+                viewModel.insertNewCategory(mewCat);
             }
         });
 

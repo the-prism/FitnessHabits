@@ -83,6 +83,10 @@ public class ActiviteViewModel extends ViewModel {
         repository.saveActiviteData(activite);
     }
 
+    public void insertNewCategory(ActiviteCategory category){
+        repository.saveActiviteCategory(category);
+    }
+
     public void createDb() {
         ActiviteCategory cat1 = new ActiviteCategory();
         cat1.setName("Test1");
