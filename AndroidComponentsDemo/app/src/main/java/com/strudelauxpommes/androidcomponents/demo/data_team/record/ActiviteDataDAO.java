@@ -22,6 +22,9 @@ public interface ActiviteDataDAO {
     @Query("SELECT * FROM ActiviteData WHERE date == :date")
     LiveData<List<ActiviteData>> getActivite(String date);
 
+    @Query("select * from ActiviteData")
+    LiveData<List<ActiviteData>> getAllActivite();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertOrReplaceActiviteDataData(ActiviteData activiteData);
+    void insertOrReplaceActiviteData(ActiviteData activiteData);
 }

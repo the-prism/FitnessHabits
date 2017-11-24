@@ -18,7 +18,6 @@ import java.util.Date;
  */
 @Entity(primaryKeys = {"date","activite"})
 public class ActiviteData {
-    @TypeConverters({DateConverter.class})
     @NonNull
     private String date;
     @NonNull

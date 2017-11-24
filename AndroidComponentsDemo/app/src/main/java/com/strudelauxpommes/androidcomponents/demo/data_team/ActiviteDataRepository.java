@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
+import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 
 import java.time.LocalDateTime;
@@ -24,10 +25,9 @@ public class ActiviteDataRepository {
         this.activiteDataDAO = activiteDataDAO;
     }
 
-    public LiveData<List<ActiviteData>> loadActiviteData(String arg) {
+    public LiveData<List<ActiviteData>> loadActiviteData() {
         if (activitesData == null){
             ActiviteData defaultActiviteData = new ActiviteData();
-            LocalDateTime date = LocalDateTime.now();
             defaultActiviteData.setDate("Fuckoff");
             defaultActiviteData.setActivite("Fuck");
             defaultActiviteData.setIntensite(1);
@@ -37,7 +37,7 @@ public class ActiviteDataRepository {
                 @NonNull
                 @Override
                 protected LiveData<List<ActiviteData>> loadFromDb(){
-                    return activiteDataDAO.getActivite(arg);
+                    return activiteDataDAO.getAllActivite();
                 }
             }.getAsLiveData();
         }
@@ -46,12 +46,12 @@ public class ActiviteDataRepository {
 
     @SuppressLint("StaticFieldLeak")
     @MainThread
-    public void saveUIData(ActiviteData activite) {
+    public void saveActiviteData(ActiviteData activite) {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
                 System.out.println("Insert new DATA                   !");
-                activiteDataDAO.insertOrReplaceActiviteDataData(activite);
+                DemoApplication.application.getDatabase().activiteDAO().insertOrReplaceActiviteData(activite);
                 return null;
             }
         }.execute();

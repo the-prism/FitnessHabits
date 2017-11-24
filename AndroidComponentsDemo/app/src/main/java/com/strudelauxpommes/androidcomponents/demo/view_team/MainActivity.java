@@ -1,10 +1,13 @@
 package com.strudelauxpommes.androidcomponents.demo.view_team;
 
+import android.arch.core.util.Function;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.Transformations;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,14 +22,12 @@ import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 
 import com.strudelauxpommes.androidcomponents.demo.R;
 import com.strudelauxpommes.androidcomponents.demo.data_team.ActiviteDataRepository;
-import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
-import com.strudelauxpommes.androidcomponents.demo.data_team.pref.PreferenceInstance;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.UIData;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.CalendarDate;
 
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     CalendarView calendar;
 
+    List<ActiviteData> activiteLiveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,17 +90,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         bindButtons();
-
-
-        System.out.println("APPCREATE --------------------------------------------------------------------------");
-        ActiviteDataRepository repo = DemoApplication.application.getActiviteDataRepository();
-        LiveData<List<ActiviteData>> activiteLiveData = repo.loadActiviteData("FUCKOFF");
-        ActiviteData test = new ActiviteData();
-        test.setDate("FU");
-        test.setActivite("BOB");
-        test.setIntensite(10);
-        repo.saveUIData(test);
-        activiteLiveData = repo.loadActiviteData("FU");
     }
 
     void initReferences() {
