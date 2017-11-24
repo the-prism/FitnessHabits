@@ -45,8 +45,7 @@ public class CalendarDate extends BaseModelObject implements SerializableToStrin
 
     public long getTimeInMillis() {
         // utilité: pour la méthode CalendarView::setDate()
-        Calendar calendar = Calendar.getInstance();
-        return calendar.getTimeInMillis();
+        return date.getTimeInMillis();
     }
 
     @Override
