@@ -17,8 +17,8 @@ import java.util.List;
 
 @Dao
 public interface ActiviteDAO {
-    @Query("SELECT * FROM ActiviteData WHERE date == :date")
-    LiveData<List<ActiviteData>> getActivite(long date);
+    @Query("SELECT * FROM ActiviteData")
+    LiveData<List<ActiviteData>> getActivite();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOrReplaceUIData(ActiviteData activiteData);

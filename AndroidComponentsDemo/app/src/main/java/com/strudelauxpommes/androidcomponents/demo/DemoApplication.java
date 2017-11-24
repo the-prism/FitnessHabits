@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.support.annotation.MainThread;
 
+import com.strudelauxpommes.androidcomponents.demo.data_team.ActiviteDataRepository;
 import com.strudelauxpommes.androidcomponents.demo.data_team.AppDatabase;
 import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
 
@@ -18,6 +19,7 @@ public class DemoApplication extends Application {
 
     private AppDatabase database;
     private UIDataRepository uiDataRepository;
+    private ActiviteDataRepository activiteDataRepository;
 
     @MainThread
     public AppDatabase getDatabase() {
@@ -42,4 +44,11 @@ public class DemoApplication extends Application {
         DemoApplication.application = this;
     }
 
+    @MainThread
+    public ActiviteDataRepository getActiviteDataRepository() {
+        if(activiteDataRepository == null){
+            activiteDataRepository = new ActiviteDataRepository(getDatabase().activiteDAO());
+        }
+        return activiteDataRepository;
+    }
 }

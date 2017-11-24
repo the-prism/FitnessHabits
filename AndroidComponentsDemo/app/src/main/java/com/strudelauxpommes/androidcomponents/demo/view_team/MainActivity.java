@@ -1,5 +1,6 @@
 package com.strudelauxpommes.androidcomponents.demo.view_team;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -17,10 +18,15 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
+import com.strudelauxpommes.androidcomponents.demo.data_team.ActiviteDataRepository;
 import com.strudelauxpommes.androidcomponents.demo.data_team.AppDatabase;
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.ActiviteData;
 import com.strudelauxpommes.androidcomponents.demo.view_team.FormViewModel;
 
 import com.strudelauxpommes.androidcomponents.demo.R;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,6 +89,17 @@ public class MainActivity extends AppCompatActivity {
                 viewModel.setBackgroundColor(FormViewModel.BackgroundColor.purple));
         buttonTextSizePicker.setOnValueChangedListener((numberPicker, oldFontSize, newFontSize) ->
                 viewModel.setFontSize(newFontSize));
+
+        System.out.println("APPCREATE --------------------------------------------------------------------------");
+        ActiviteDataRepository repo = DemoApplication.application.getActiviteDataRepository();
+        LiveData<List<ActiviteData>> activiteLiveData = repo.loadActiviteData();
+        ActiviteData test = new ActiviteData();
+        test.setDate(LocalDateTime.now());
+        test.setActivite("BOB");
+        test.setIntensite(10);
+        repo.saveUIData(test);
+        activiteLiveData = repo.loadActiviteData();
+
     }
 
 }
