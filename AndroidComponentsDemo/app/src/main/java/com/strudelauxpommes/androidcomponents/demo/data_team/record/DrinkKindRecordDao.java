@@ -10,15 +10,16 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 
+import java.util.List;
 
 
 @Dao
-public interface AlcoolKindRecordDao {
+public interface DrinkKindRecordDao {
 
-    //@Query("SELECT * FROM AlcoolKindRecord WHERE date == :date AND kind == :kind")
-    //List<AlcoolKindRecord> getAlcoolKindRecords();
+    @Query("SELECT * FROM DrinkKindRecord WHERE category == :category")
+    LiveData<List<DrinkKindRecord>> getDrinkKindRecords(GeneralCategory category);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertOrReplaceAlcoolKindRecord(AlcoolKindRecord alcoolKindRecord);
+    void insertOrReplaceDrinkKindRecord(DrinkKindRecord drinkKindRecord);
 
 }

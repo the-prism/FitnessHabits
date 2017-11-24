@@ -12,7 +12,7 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 
 
 @Entity(foreignKeys = @ForeignKey(
-        entity = AlcoolKindRecord.class,
+        entity = DrinkKindRecord.class,
         parentColumns = "id",
         childColumns = "kind"))
 public class AlcoolRecord extends BaseRecord {
