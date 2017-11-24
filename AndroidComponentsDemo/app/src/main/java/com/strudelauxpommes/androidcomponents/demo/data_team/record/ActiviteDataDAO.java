@@ -25,6 +25,9 @@ public interface ActiviteDataDAO {
     @Query("select ActiviteData.*, ActiviteCategory.name as activite FROM ActiviteData LEFT JOIN ActiviteCategory ON ActiviteData.categoryId = ActiviteCategory.id")
     LiveData<List<ActiviteData>> getAllActivite();
 
+    @Query("select * from activitedata where date == :date and categoryId == :id")
+    LiveData<ActiviteData> getTodayDetails(String date, int id);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOrReplaceActiviteData(ActiviteData activiteData);
 }

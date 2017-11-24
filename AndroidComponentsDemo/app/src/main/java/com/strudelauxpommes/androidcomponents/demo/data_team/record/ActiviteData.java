@@ -20,7 +20,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 /**
  * Created by Thomas on 2017-11-18.
  */
-@Entity(primaryKeys = {"date","categoryId"} ,
+@Entity(primaryKeys = {"date", "categoryId"},
         foreignKeys = @ForeignKey(entity = ActiviteCategory.class,
                 parentColumns = "id",
                 childColumns = "categoryId",

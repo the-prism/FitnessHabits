@@ -64,7 +64,7 @@ public class ActiviteActivity extends BaseSubActivity {
     }
 
     private void subscribeUiLoans() {
-        viewModel.getListOfActivites().observe(this, fruitlist -> {
+        viewModel.getListOfCategories().observe(this, fruitlist -> {
             // update UI
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                     android.R.layout.simple_list_item_1, android.R.id.text1, fruitlist);

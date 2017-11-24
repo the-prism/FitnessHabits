@@ -1,6 +1,7 @@
 package com.strudelauxpommes.androidcomponents.demo.data_team.record;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
@@ -12,6 +13,9 @@ public class ActiviteCategory {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
+
+
+    private int intensite;
 
     public int getId() {
         return id;
@@ -27,5 +31,13 @@ public class ActiviteCategory {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setIntensite(int intensite) {
+        this.intensite = intensite;
+    }
+
+    public int getIntensite() {
+        return intensite;
     }
 }

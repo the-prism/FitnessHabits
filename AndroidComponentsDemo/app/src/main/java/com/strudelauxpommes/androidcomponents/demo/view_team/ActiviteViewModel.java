@@ -1,13 +1,18 @@
 package com.strudelauxpommes.androidcomponents.demo.view_team;
 
 import android.arch.core.util.Function;
+import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Transformations;
 import android.arch.lifecycle.ViewModel;
+import android.os.AsyncTask;
+import android.widget.ArrayAdapter;
 
 import com.strudelauxpommes.androidcomponents.demo.data_team.ActiviteDataRepository;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategory;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
+import com.strudelauxpommes.androidcomponents.demo.subview.ActiviteActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,7 +47,8 @@ public class ActiviteViewModel extends ViewModel {
                     public List<String> apply(List<ActiviteCategory> listOfActivities) {
                         ArrayList<String> list = new ArrayList<>();
                         for (ActiviteCategory act : listOfActivities) {
-                            list.add(act.getName());
+
+                            list.add(act.getName() + " " + " " + act.getIntensite());
                         }
                         return list;
                     }
@@ -87,15 +93,15 @@ public class ActiviteViewModel extends ViewModel {
         cat2.setId(2); // So we dont create more each run
         repository.saveActiviteCategory(cat2);
         ActiviteData test = new ActiviteData();
-        test.setDate("Say my name");
+        test.setDate("NOW");
         test.setActivite("BOB");
         test.setIntensite(10);
-        test.setCategoryId(2);
+        test.setCategoryId(1);
         repository.saveActiviteData(test);
         ActiviteData test2 = new ActiviteData();
         test2.setDate("And you ???");
-        test2.setActivite("BOB");
-        test2.setIntensite(10);
+        test2.setActivite("NOW");
+        test2.setIntensite(5);
         test2.setCategoryId(1);
         repository.saveActiviteData(test2);
     }

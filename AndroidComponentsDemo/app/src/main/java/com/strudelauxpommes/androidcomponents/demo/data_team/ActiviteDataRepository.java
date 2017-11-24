@@ -23,13 +23,13 @@ public class ActiviteDataRepository {
     LiveData<List<ActiviteData>> activitesData;
     LiveData<List<ActiviteCategory>> activiteCategory;
 
-    public ActiviteDataRepository(ActiviteDataDAO activiteDataDAO, ActiviteCategoryDAO activiteCategoryDAO){
+    public ActiviteDataRepository(ActiviteDataDAO activiteDataDAO, ActiviteCategoryDAO activiteCategoryDAO) {
         this.activiteDataDAO = activiteDataDAO;
         this.activiteCategoryDAO = activiteCategoryDAO;
     }
 
     public LiveData<List<ActiviteData>> loadActiviteData() {
-        if (activitesData == null){
+        if (activitesData == null) {
             ActiviteData defaultActiviteData = new ActiviteData();
             defaultActiviteData.setDate("Fuckoff");
             defaultActiviteData.setActivite("Fuck");
@@ -39,7 +39,7 @@ public class ActiviteDataRepository {
             activitesData = new DatabaseResource<List<ActiviteData>>(list) {
                 @NonNull
                 @Override
-                protected LiveData<List<ActiviteData>> loadFromDb(){
+                protected LiveData<List<ActiviteData>> loadFromDb() {
                     return activiteDataDAO.getAllActivite();
                 }
             }.getAsLiveData();
@@ -48,7 +48,7 @@ public class ActiviteDataRepository {
     }
 
     public LiveData<List<ActiviteCategory>> loadCategories() {
-        if (activiteCategory == null){
+        if (activiteCategory == null) {
             ActiviteCategory defaultCategory = new ActiviteCategory();
             defaultCategory.setName("Tester");
             List<ActiviteCategory> list = new ArrayList<ActiviteCategory>();
@@ -62,6 +62,10 @@ public class ActiviteDataRepository {
             }.getAsLiveData();
         }
         return activiteCategory;
+    }
+
+    public LiveData<ActiviteData> debugLoadCategories(String date, int id) {
+        return activiteDataDAO.getTodayDetails(date, id);
     }
 
     public LiveData<ActiviteCategory> getCategory(int id) {

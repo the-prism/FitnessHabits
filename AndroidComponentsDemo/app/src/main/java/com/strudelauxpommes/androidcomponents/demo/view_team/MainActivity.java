@@ -22,6 +22,8 @@ import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 
 import com.strudelauxpommes.androidcomponents.demo.R;
 import com.strudelauxpommes.androidcomponents.demo.data_team.ActiviteDataRepository;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategory;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategoryDAO;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.CalendarDate;
 
@@ -125,9 +127,7 @@ public class MainActivity extends AppCompatActivity {
         weightButton.setOnClickListener(button -> viewModel.onWeightButton(this, button));
         alcoolButton.setOnClickListener(button -> viewModel.onAlcoolButton(this, button));
         prefButton.setOnClickListener(button -> viewModel.onPrefButton(this, button));
-        activiteButton.setOnClickListener(button -> viewModel.onActiviteButton(this,button));
-
-
+        activiteButton.setOnClickListener(button -> viewModel.onActiviteButton(this, button));
 
 
         calendar.setOnDateChangeListener((calendar, year, month, day) -> onDateChange(year, month, day));
@@ -142,24 +142,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

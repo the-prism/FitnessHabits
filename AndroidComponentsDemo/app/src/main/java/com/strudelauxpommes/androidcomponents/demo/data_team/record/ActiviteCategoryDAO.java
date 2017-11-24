@@ -14,7 +14,18 @@ import java.util.List;
 
 @Dao
 public interface ActiviteCategoryDAO {
-    @Query("select * from ActiviteCategory")
+    /* THIS IS GOOD
+    @Query("select ActiviteCategory.id, ActiviteCategory.name, ActiviteData.intensite " +
+            "from ActiviteCategory " +
+            "left join ActiviteData on ActiviteCategory.id = ActiviteData.categoryId")
+    LiveData<List<ActiviteCategory>> getAllCategories();
+    */
+
+    // Join the 2 tables and add the total for each category
+    @Query("select ActiviteCategory.id, ActiviteCategory.name, sum(ActiviteData.intensite) as intensite " +
+            "from ActiviteCategory " +
+            "left join ActiviteData on ActiviteCategory.id = ActiviteData.categoryId " +
+            "group by ActiviteCategory.id")
     LiveData<List<ActiviteCategory>> getAllCategories();
 
     @Query("select * from ActiviteCategory where id == :id limit 1")
