@@ -14,9 +14,6 @@ public class ActiviteCategory {
     private int id;
     private String name;
 
-
-    private int intensite;
-
     public int getId() {
         return id;
     }
@@ -31,13 +28,5 @@ public class ActiviteCategory {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setIntensite(int intensite) {
-        this.intensite = intensite;
-    }
-
-    public int getIntensite() {
-        return intensite;
     }
 }

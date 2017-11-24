@@ -1,16 +1,26 @@
 package com.strudelauxpommes.androidcomponents.demo.data_team.record;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
+import android.support.annotation.NonNull;
+
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+import static android.arch.persistence.room.ForeignKey.NO_ACTION;
 
 /**
- * Created by Thomas on 2017-11-24.
+ * Created by Thomas on 2017-11-18.
  */
-
-public class ActiviteData {
+@Entity(primaryKeys = {"date", "categoryId"},
+        foreignKeys = @ForeignKey(entity = ActiviteCategory.class,
+                parentColumns = "id",
+                childColumns = "categoryId",
+                onDelete = NO_ACTION))
+public class ActiviteEntry {
+    @NonNull
     private String date;
     private int intensite;
     private int categoryId;
-    private String name;
 
     public String getDate() {
         return date;
@@ -35,12 +45,5 @@ public class ActiviteData {
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
+
