@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class CalendarDate {
+public class CalendarDate extends BaseModelObject {
 
     static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     Calendar date;
@@ -22,6 +22,7 @@ public class CalendarDate {
         } catch (ParseException e) {
             e.printStackTrace();
             date.clear();
+            assertThat(false);
         }
         return new CalendarDate(date);
     }
