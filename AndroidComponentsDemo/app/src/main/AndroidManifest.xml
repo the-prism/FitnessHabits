@@ -23,6 +23,7 @@
         <activity android:name=".subview.WeightActivity" />
         <activity android:name=".subview.AlcoolActivity" />
         <activity android:name=".subview.PrefActivity"></activity>
+        <activity android:name=".subview.ActiviteActivity"/>
     </application>
 
 </manifest>

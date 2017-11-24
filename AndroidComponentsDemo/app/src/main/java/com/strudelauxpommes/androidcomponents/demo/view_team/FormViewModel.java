@@ -53,6 +53,12 @@ public class FormViewModel extends ViewModel {
         main_activity.startActivityForResult(intent, 0);
     }
 
+    public void onActiviteButton(MainActivity main_activity, View button) {
+        Context context = button.getContext();
+        Intent intent = new Intent(context, ActiviteActivity.class);
+        main_activity.startActivityForResult(intent, 0);
+    }
+
 
 
 
