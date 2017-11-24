@@ -21,12 +21,25 @@ public interface ActiviteCategoryDAO {
     LiveData<List<ActiviteCategory>> getAllCategories();
     */
 
+    /**
+     * PROPER WAY TO HANDLE THE DATE (appart from NOW being hard coded)
+     */
+    // Join the 2 tables and add the total for each category
+    @Query("select ActiviteCategory.id, ActiviteCategory.name, sum(ActiviteTemp.intensite) as intensite " +
+            "from ActiviteCategory " +
+            "left join (" +
+            "select * from ActiviteData where ActiviteData.date = 'NOW' ) as ActiviteTemp on ActiviteCategory.id = ActiviteTemp.categoryId " +
+            "group by ActiviteCategory.id")
+    LiveData<List<ActiviteCategory>> getAllCategories();
+
+    /*
     // Join the 2 tables and add the total for each category
     @Query("select ActiviteCategory.id, ActiviteCategory.name, sum(ActiviteData.intensite) as intensite " +
             "from ActiviteCategory " +
             "left join ActiviteData on ActiviteCategory.id = ActiviteData.categoryId " +
             "group by ActiviteCategory.id")
     LiveData<List<ActiviteCategory>> getAllCategories();
+    */
 
     @Query("select * from ActiviteCategory where id == :id limit 1")
     LiveData<ActiviteCategory> getCategory(int id);

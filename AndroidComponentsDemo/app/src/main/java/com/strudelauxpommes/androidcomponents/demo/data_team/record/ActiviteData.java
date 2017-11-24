@@ -6,6 +6,7 @@ import android.arch.persistence.room.Ignore;
 import android.support.annotation.NonNull;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
+import static android.arch.persistence.room.ForeignKey.NO_ACTION;
 
 /**
  * Created by Thomas on 2017-11-18.
@@ -14,7 +15,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         foreignKeys = @ForeignKey(entity = ActiviteCategory.class,
                 parentColumns = "id",
                 childColumns = "categoryId",
-                onDelete = CASCADE))
+                onDelete = NO_ACTION))
 public class ActiviteData {
     @NonNull
     private String date;
