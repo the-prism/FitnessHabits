@@ -14,7 +14,7 @@ import android.widget.ListView;
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 import com.strudelauxpommes.androidcomponents.demo.R;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategory;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteEntry;
 import com.strudelauxpommes.androidcomponents.demo.view_team.ActiviteViewModel;
 
 /**
@@ -56,7 +56,7 @@ public class ActiviteActivity extends BaseSubActivity {
         date = findViewById(R.id.date);
 
         newItem.setOnClickListener(view -> {
-            ActiviteData fromUI = new ActiviteData();
+            ActiviteEntry fromUI = new ActiviteEntry();
             int id = Integer.parseInt(categoryId.getText().toString());
             int inten = Integer.parseInt(amount.getText().toString());
             fromUI.setCategoryId(id);
@@ -78,7 +78,7 @@ public class ActiviteActivity extends BaseSubActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
                 view.setSelected(true);
-                ActiviteData newObjt = new ActiviteData();
+                ActiviteEntry newObjt = new ActiviteEntry();
                 newObjt.setCategoryId(2);
                 newObjt.setDate("TODAY");
                 newObjt.setIntensite(2);

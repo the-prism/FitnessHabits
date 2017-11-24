@@ -7,9 +7,10 @@ import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategory;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategoryDAO;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteDatDAO;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteDataDAO;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteEntry;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteEntryDAO;
 import com.strudelauxpommes.androidcomponents.demo.data_team.*;
 
 import java.util.ArrayList;
@@ -20,68 +21,67 @@ import java.util.List;
  */
 
 public class ActiviteDataRepository extends BaseRepository {
-    LiveData<List<ActiviteData>> activitesData;
-    LiveData<List<ActiviteCategory>> activiteCategory;
-    private ActiviteDataDAO activiteDataDAO;
-    private ActiviteCategoryDAO activiteCategoryDAO;
+    LiveData<List<ActiviteEntry>> activitesData;
+    LiveData<List<ActiviteData>> activiteCategory;
+    private ActiviteEntryDAO activiteEntryDAO;
+    private ActiviteDatDAO activiteDatDAO;
 
-    public ActiviteDataRepository(ActiviteDataDAO activiteDataDAO, ActiviteCategoryDAO activiteCategoryDAO) {
-        this.activiteDataDAO = activiteDataDAO;
-        this.activiteCategoryDAO = activiteCategoryDAO;
+    public ActiviteDataRepository(ActiviteEntryDAO activiteEntryDAO, ActiviteDatDAO activiteDatDAO) {
+        this.activiteEntryDAO = activiteEntryDAO;
+        this.activiteDatDAO = activiteDatDAO;
     }
 
-    public LiveData<List<ActiviteData>> loadActiviteData() {
+    public LiveData<List<ActiviteEntry>> loadActiviteData() {
         if (activitesData == null) {
-            ActiviteData defaultActiviteData = new ActiviteData();
-            defaultActiviteData.setDate("Fuckoff");
-            defaultActiviteData.setActivite("Fuck");
-            defaultActiviteData.setIntensite(1);
-            List<ActiviteData> list = new ArrayList<ActiviteData>();
-            list.add(defaultActiviteData);
-            activitesData = new DatabaseResource<List<ActiviteData>>(list) {
+            ActiviteEntry defaultActiviteEntry = new ActiviteEntry();
+            defaultActiviteEntry.setDate("Fuckoff");
+            defaultActiviteEntry.setIntensite(1);
+            List<ActiviteEntry> list = new ArrayList<ActiviteEntry>();
+            list.add(defaultActiviteEntry);
+            activitesData = new DatabaseResource<List<ActiviteEntry>>(list) {
                 @NonNull
                 @Override
-                protected LiveData<List<ActiviteData>> loadFromDb() {
-                    return activiteDataDAO.getAllActivite();
+                protected LiveData<List<ActiviteEntry>> loadFromDb() {
+                    return activiteEntryDAO.getAllActivite();
                 }
             }.getAsLiveData();
         }
         return activitesData;
     }
 
-    public LiveData<List<ActiviteCategory>> loadCategories() {
+    public LiveData<List<ActiviteData>> loadCategories() {
         if (activiteCategory == null) {
-            ActiviteCategory defaultCategory = new ActiviteCategory();
+            ActiviteData defaultCategory = new ActiviteData();
             defaultCategory.setName("Tester");
-            List<ActiviteCategory> list = new ArrayList<ActiviteCategory>();
+            List<ActiviteData> list = new ArrayList<ActiviteData>();
             list.add(defaultCategory);
-            activiteCategory = new DatabaseResource<List<ActiviteCategory>>(list) {
+            activiteCategory = new DatabaseResource<List<ActiviteData>>(list) {
                 @NonNull
                 @Override
-                protected LiveData<List<ActiviteCategory>> loadFromDb() {
-                    return activiteCategoryDAO.getAllCategories();
+                protected LiveData<List<ActiviteData>> loadFromDb() {
+                    return activiteDatDAO.getAllCategories();
                 }
             }.getAsLiveData();
         }
         return activiteCategory;
     }
 
-    public LiveData<ActiviteData> debugLoadCategories(String date, int id) {
-        return activiteDataDAO.getTodayDetails(date, id);
+    public LiveData<ActiviteEntry> debugLoadCategories(String date, int id) {
+        return activiteEntryDAO.getTodayDetails(date, id);
     }
 
     public LiveData<ActiviteCategory> getCategory(int id) {
-        return activiteCategoryDAO.getCategory(id);
+        return activiteDatDAO.getCategory(id);
     }
 
     @SuppressLint("StaticFieldLeak")
     @MainThread
-    public void saveActiviteData(ActiviteData activite) {
+    public void saveActiviteData(ActiviteEntry activite) {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
                 System.out.println("Insert new DATA                   !");
-                activiteDataDAO.insertOrReplaceActiviteData(activite);
+                activiteEntryDAO.insertOrReplaceActiviteData(activite);
                 return null;
             }
         }.execute();
@@ -94,7 +94,7 @@ public class ActiviteDataRepository extends BaseRepository {
             @Override
             protected Void doInBackground(Void... voids) {
                 System.out.println("Insert new DATA                   !");
-                activiteCategoryDAO.insertOrReplaceActiviteData(category);
+                activiteDatDAO.insertOrReplaceActiviteData(category);
                 return null;
             }
         }.execute();

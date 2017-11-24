@@ -13,11 +13,11 @@ import java.util.List;
  */
 
 @Dao
-public interface ActiviteCategoryDAO {
+public interface ActiviteDatDAO {
     /* THIS IS GOOD
-    @Query("select ActiviteCategory.id, ActiviteCategory.name, ActiviteData.intensite " +
+    @Query("select ActiviteCategory.id, ActiviteCategory.name, ActiviteEntry.intensite " +
             "from ActiviteCategory " +
-            "left join ActiviteData on ActiviteCategory.id = ActiviteData.categoryId")
+            "left join ActiviteEntry on ActiviteCategory.id = ActiviteEntry.categoryId")
     LiveData<List<ActiviteCategory>> getAllCategories();
     */
 
@@ -25,18 +25,18 @@ public interface ActiviteCategoryDAO {
      * PROPER WAY TO HANDLE THE DATE (appart from NOW being hard coded)
      */
     // Join the 2 tables and add the total for each category
-    @Query("select ActiviteCategory.id, ActiviteCategory.name, sum(ActiviteTemp.intensite) as intensite " +
+    @Query("select ActiviteCategory.id as categoryId, ActiviteCategory.name, sum(ActiviteTemp.intensite) as intensite, ActiviteTemp.date " +
             "from ActiviteCategory " +
             "left join (" +
-            "select * from ActiviteData where ActiviteData.date = 'NOW' ) as ActiviteTemp on ActiviteCategory.id = ActiviteTemp.categoryId " +
+            "select * from ActiviteEntry where ActiviteEntry.date = 'NOW' ) as ActiviteTemp on ActiviteCategory.id = ActiviteTemp.categoryId " +
             "group by ActiviteCategory.id")
-    LiveData<List<ActiviteCategory>> getAllCategories();
+    LiveData<List<ActiviteData>> getAllCategories();
 
     /*
     // Join the 2 tables and add the total for each category
-    @Query("select ActiviteCategory.id, ActiviteCategory.name, sum(ActiviteData.intensite) as intensite " +
+    @Query("select ActiviteCategory.id, ActiviteCategory.name, sum(ActiviteEntry.intensite) as intensite " +
             "from ActiviteCategory " +
-            "left join ActiviteData on ActiviteCategory.id = ActiviteData.categoryId " +
+            "left join ActiviteEntry on ActiviteCategory.id = ActiviteEntry.categoryId " +
             "group by ActiviteCategory.id")
     LiveData<List<ActiviteCategory>> getAllCategories();
     */

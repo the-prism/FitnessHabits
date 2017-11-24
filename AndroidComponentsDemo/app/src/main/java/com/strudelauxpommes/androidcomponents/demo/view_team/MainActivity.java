@@ -1,13 +1,8 @@
 package com.strudelauxpommes.androidcomponents.demo.view_team;
 
-import android.arch.core.util.Function;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.Transformations;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,15 +16,10 @@ import android.widget.NumberPicker;
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 
 import com.strudelauxpommes.androidcomponents.demo.R;
-import com.strudelauxpommes.androidcomponents.demo.data_team.repository.*;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategory;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategoryDAO;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteEntry;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.CalendarDate;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     CalendarView calendar;
 
-    List<ActiviteData> activiteLiveData;
+    List<ActiviteEntry> activiteLiveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
