@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 import com.strudelauxpommes.androidcomponents.demo.R;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
 import com.strudelauxpommes.androidcomponents.demo.view_team.ActiviteViewModel;
 
 /**
@@ -55,6 +56,11 @@ public class ActiviteActivity extends BaseSubActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
                 view.setSelected(true);
+                ActiviteData newObjt = new ActiviteData();
+                newObjt.setCategoryId(2);
+                newObjt.setDate("TODAY");
+                newObjt.setIntensite(2);
+                viewModel.insertItem(newObjt);
             }
         });
 
