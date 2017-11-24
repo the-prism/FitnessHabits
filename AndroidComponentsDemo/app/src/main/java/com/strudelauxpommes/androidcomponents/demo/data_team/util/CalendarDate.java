@@ -41,8 +41,9 @@ public class CalendarDate {
     }
 
     public long getTimeInMillis() {
-
+        // utilité: pour la méthode CalendarView::setDate()
         Calendar calendar = Calendar.getInstance();
         return calendar.getTimeInMillis();
     }
+
 }
