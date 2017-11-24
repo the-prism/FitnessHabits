@@ -1,7 +1,8 @@
 package com.strudelauxpommes.androidcomponents.demo.data_team.record;
 
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.BaseField;
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.BaseRecord;
 
 
 public class WeightFieldFat extends BaseField<Float> {

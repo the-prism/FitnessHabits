@@ -1,6 +1,7 @@
-package com.strudelauxpommes.androidcomponents.demo.data_team;
+package com.strudelauxpommes.androidcomponents.demo.data_team.model;
 
 
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.BaseRecord;
 
 public abstract class BaseField<Type> {
 

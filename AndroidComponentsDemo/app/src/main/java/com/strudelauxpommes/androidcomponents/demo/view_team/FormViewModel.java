@@ -9,7 +9,7 @@ import android.support.annotation.ColorRes;
 import android.util.Log;
 import android.view.View;
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.RecordInstance;
 import com.strudelauxpommes.androidcomponents.demo.data_team.repository.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.pref.PreferenceInstance;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;

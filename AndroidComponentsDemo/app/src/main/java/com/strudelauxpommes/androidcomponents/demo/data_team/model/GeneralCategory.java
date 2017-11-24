@@ -1,4 +1,4 @@
-package com.strudelauxpommes.androidcomponents.demo.data_team;
+package com.strudelauxpommes.androidcomponents.demo.data_team.model;
 
 
 
