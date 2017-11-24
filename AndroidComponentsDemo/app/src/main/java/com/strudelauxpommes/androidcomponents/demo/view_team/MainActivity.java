@@ -92,13 +92,13 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println("APPCREATE --------------------------------------------------------------------------");
         ActiviteDataRepository repo = DemoApplication.application.getActiviteDataRepository();
-        LiveData<List<ActiviteData>> activiteLiveData = repo.loadActiviteData();
+        LiveData<List<ActiviteData>> activiteLiveData = repo.loadActiviteData("FUCKOFF");
         ActiviteData test = new ActiviteData();
-        test.setDate(LocalDateTime.now());
+        test.setDate("FU");
         test.setActivite("BOB");
         test.setIntensite(10);
         repo.saveUIData(test);
-        activiteLiveData = repo.loadActiviteData();
+        activiteLiveData = repo.loadActiviteData("FU");
     }
 
     void initReferences() {

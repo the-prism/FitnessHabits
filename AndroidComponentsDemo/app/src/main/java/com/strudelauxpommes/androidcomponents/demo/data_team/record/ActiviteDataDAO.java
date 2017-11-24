@@ -18,10 +18,10 @@ import java.util.List;
  */
 
 @Dao
-public interface ActiviteDAO {
+public interface ActiviteDataDAO {
     @Query("SELECT * FROM ActiviteData WHERE date == :date")
-    LiveData<List<ActiviteData>> getActivite(long date);
+    LiveData<List<ActiviteData>> getActivite(String date);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertOrReplaceUIData(ActiviteData activiteData);
+    void insertOrReplaceActiviteDataData(ActiviteData activiteData);
 }

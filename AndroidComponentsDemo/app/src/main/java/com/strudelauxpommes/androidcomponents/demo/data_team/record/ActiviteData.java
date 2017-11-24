@@ -18,19 +18,18 @@ import java.util.Date;
  */
 @Entity(primaryKeys = {"date","activite"})
 public class ActiviteData {
-
     @TypeConverters({DateConverter.class})
     @NonNull
-    private LocalDateTime date;
+    private String date;
     @NonNull
     private String activite;
     private int intensite;
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

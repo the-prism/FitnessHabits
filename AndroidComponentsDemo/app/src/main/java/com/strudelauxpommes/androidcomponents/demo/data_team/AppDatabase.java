@@ -4,9 +4,7 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
-import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.converter.*;
 
 /**
@@ -20,7 +18,7 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.converter.*;
 @TypeConverters({BackgroundColorConverter.class, CalendarDateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UIDataDao userDao();
-    public abstract ActiviteDAO activiteDAO();
+    public abstract ActiviteDataDAO activiteDAO();
     public abstract WeightRecordDao weightDao();
     public abstract PrefRecordDao prefRecordDao();
 }
