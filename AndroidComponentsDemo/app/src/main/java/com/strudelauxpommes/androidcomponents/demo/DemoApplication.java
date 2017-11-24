@@ -41,7 +41,7 @@ public class DemoApplication extends Application {
     @MainThread
     public ActiviteDataRepository getActiviteDataRepository() {
         if (activiteDataRepository == null) {
-            activiteDataRepository = new ActiviteDataRepository(getDatabase().activiteDAO());
+            activiteDataRepository = new ActiviteDataRepository(getDatabase().activiteDAO(), getDatabase().activiteCategoryDAO());
         }
         return activiteDataRepository;
     }

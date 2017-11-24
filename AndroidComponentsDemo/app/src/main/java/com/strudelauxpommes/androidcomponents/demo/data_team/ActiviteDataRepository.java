@@ -19,10 +19,13 @@ import java.util.List;
 
 public class ActiviteDataRepository {
     private ActiviteDataDAO activiteDataDAO;
+    private ActiviteCategoryDAO activiteCategoryDAO;
     LiveData<List<ActiviteData>> activitesData;
+    LiveData<List<ActiviteCategory>> activiteCategory;
 
-    public ActiviteDataRepository(ActiviteDataDAO activiteDataDAO){
+    public ActiviteDataRepository(ActiviteDataDAO activiteDataDAO, ActiviteCategoryDAO activiteCategoryDAO){
         this.activiteDataDAO = activiteDataDAO;
+        this.activiteCategoryDAO = activiteCategoryDAO;
     }
 
     public LiveData<List<ActiviteData>> loadActiviteData() {
@@ -44,6 +47,27 @@ public class ActiviteDataRepository {
         return activitesData;
     }
 
+    public LiveData<List<ActiviteCategory>> loadCategories() {
+        if (activiteCategory == null){
+            ActiviteCategory defaultCategory = new ActiviteCategory();
+            defaultCategory.setName("Tester");
+            List<ActiviteCategory> list = new ArrayList<ActiviteCategory>();
+            list.add(defaultCategory);
+            activiteCategory = new DatabaseResource<List<ActiviteCategory>>(list) {
+                @NonNull
+                @Override
+                protected LiveData<List<ActiviteCategory>> loadFromDb() {
+                    return activiteCategoryDAO.getAllCategories();
+                }
+            }.getAsLiveData();
+        }
+        return activiteCategory;
+    }
+
+    public LiveData<ActiviteCategory> getCategory(int id) {
+        return activiteCategoryDAO.getCategory(id);
+    }
+
     @SuppressLint("StaticFieldLeak")
     @MainThread
     public void saveActiviteData(ActiviteData activite) {
@@ -51,7 +75,20 @@ public class ActiviteDataRepository {
             @Override
             protected Void doInBackground(Void... voids) {
                 System.out.println("Insert new DATA                   !");
-                DemoApplication.application.getDatabase().activiteDAO().insertOrReplaceActiviteData(activite);
+                activiteDataDAO.insertOrReplaceActiviteData(activite);
+                return null;
+            }
+        }.execute();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    @MainThread
+    public void saveActiviteCategory(ActiviteCategory category) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                System.out.println("Insert new DATA                   !");
+                activiteCategoryDAO.insertOrReplaceActiviteData(category);
                 return null;
             }
         }.execute();

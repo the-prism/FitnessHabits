@@ -14,11 +14,12 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.converter.*;
  * Created by Marc-Antoine Sauvé on 11/11/17.
  */
 
-@Database(entities = {UIData.class, ActiviteData.class, WeightRecord.class, PrefRecord.class}, version = 6)
+@Database(entities = {UIData.class, ActiviteData.class, WeightRecord.class, PrefRecord.class, ActiviteCategory.class}, version = 8)
 @TypeConverters({BackgroundColorConverter.class, CalendarDateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UIDataDao userDao();
     public abstract ActiviteDataDAO activiteDAO();
     public abstract WeightRecordDao weightDao();
     public abstract PrefRecordDao prefRecordDao();
+    public abstract ActiviteCategoryDAO activiteCategoryDAO();
 }

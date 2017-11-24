@@ -22,7 +22,7 @@ public interface ActiviteDataDAO {
     @Query("SELECT * FROM ActiviteData WHERE date == :date")
     LiveData<List<ActiviteData>> getActivite(String date);
 
-    @Query("select * from ActiviteData")
+    @Query("select ActiviteData.*, ActiviteCategory.name as activite FROM ActiviteData LEFT JOIN ActiviteCategory ON ActiviteData.categoryId = ActiviteCategory.id")
     LiveData<List<ActiviteData>> getAllActivite();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
