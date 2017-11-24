@@ -4,10 +4,9 @@ import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.support.annotation.MainThread;
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.ActiviteDataRepository;
-import com.strudelauxpommes.androidcomponents.demo.data_team.AppDatabase;
-import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.repository.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 
 /**
  * Application class used as a singleton to create the Data layer classes (Repository and Database)

@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Transformations;
 import android.support.annotation.NonNull;
 
+import com.strudelauxpommes.androidcomponents.demo.data_team.repository.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;

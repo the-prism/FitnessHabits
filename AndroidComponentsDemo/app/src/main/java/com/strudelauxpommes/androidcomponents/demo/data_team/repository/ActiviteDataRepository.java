@@ -1,4 +1,4 @@
-package com.strudelauxpommes.androidcomponents.demo.data_team;
+package com.strudelauxpommes.androidcomponents.demo.data_team.repository;
 
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.LiveData;
@@ -10,6 +10,7 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCate
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategoryDAO;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteDataDAO;
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
 
 import java.util.ArrayList;
 import java.util.List;

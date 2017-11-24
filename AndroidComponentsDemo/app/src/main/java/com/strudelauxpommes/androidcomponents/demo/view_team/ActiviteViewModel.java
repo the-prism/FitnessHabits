@@ -9,9 +9,9 @@ import android.arch.lifecycle.ViewModel;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 
-import com.strudelauxpommes.androidcomponents.demo.data_team.ActiviteDataRepository;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategory;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
+import com.strudelauxpommes.androidcomponents.demo.data_team.repository.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 import com.strudelauxpommes.androidcomponents.demo.subview.ActiviteActivity;
 
 import java.text.SimpleDateFormat;

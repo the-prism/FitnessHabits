@@ -2,6 +2,7 @@ package com.strudelauxpommes.androidcomponents.demo.data_team.pref;
 
 
 import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.repository.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 

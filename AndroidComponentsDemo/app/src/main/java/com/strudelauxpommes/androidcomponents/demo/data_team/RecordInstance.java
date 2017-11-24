@@ -6,6 +6,7 @@ import android.arch.lifecycle.Transformations;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.strudelauxpommes.androidcomponents.demo.data_team.repository.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.PrefRecord;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.WeightRecord;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.BaseModelObject;

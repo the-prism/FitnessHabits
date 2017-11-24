@@ -1,4 +1,4 @@
-package com.strudelauxpommes.androidcomponents.demo.data_team;
+package com.strudelauxpommes.androidcomponents.demo.data_team.repository;
 
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.LiveData;
@@ -11,6 +11,7 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.pref.*;
+
 
 import java.util.HashMap;
 import java.util.Map;

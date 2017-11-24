@@ -1,9 +1,11 @@
-package com.strudelauxpommes.androidcomponents.demo.data_team;
+package com.strudelauxpommes.androidcomponents.demo.data_team.repository;
 
 
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
+
+import com.strudelauxpommes.androidcomponents.demo.data_team.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.WeightRecord;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.BaseModelObject;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.CalendarDate;

@@ -21,7 +21,7 @@ import android.widget.NumberPicker;
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
 
 import com.strudelauxpommes.androidcomponents.demo.R;
-import com.strudelauxpommes.androidcomponents.demo.data_team.ActiviteDataRepository;
+import com.strudelauxpommes.androidcomponents.demo.data_team.repository.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategory;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategoryDAO;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
