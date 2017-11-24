@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Thomas on 2017-11-19.
  */
 
-public class ActiviteDataRepository {
+public class ActiviteDataRepository extends BaseRepository {
     LiveData<List<ActiviteData>> activitesData;
     LiveData<List<ActiviteCategory>> activiteCategory;
     private ActiviteDataDAO activiteDataDAO;

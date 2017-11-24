@@ -6,13 +6,14 @@ import android.util.Log;
 public class BaseModelObject {
 
 
-    public void assertThat(boolean condition) {
+    public static void assertThat(boolean condition) {
         if(!condition) {
             throw new RuntimeException("assertion error");
         }
     }
 
-    public void print(String message) {
+    public static void print(String message) {
         Log.d("print", message);
     }
+
 }

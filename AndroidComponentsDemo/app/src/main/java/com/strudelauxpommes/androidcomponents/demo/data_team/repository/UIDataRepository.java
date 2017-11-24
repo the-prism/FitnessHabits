@@ -27,7 +27,7 @@ import java.util.Map;
  *
  * Created by Marc-Antoine Sauvé on 11/11/17.
  */
-public class UIDataRepository extends BaseModelObject {
+public class UIDataRepository extends BaseRepository {
 
     public UIDataDao uiDataDao;
     public WeightRecordDao weightRecordDao;
@@ -136,11 +136,6 @@ public class UIDataRepository extends BaseModelObject {
     public void setPref(String name, Object value) {
         prefManager.setPref(name, value);
     }
-
-
-
-
-
 
 
 
