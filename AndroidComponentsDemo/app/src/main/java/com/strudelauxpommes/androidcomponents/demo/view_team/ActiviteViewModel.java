@@ -61,12 +61,6 @@ public class ActiviteViewModel extends ViewModel {
                 });
     }
 
-    private String getCategory(int id){
-        System.out.println("ARE YOU EVEN CALLED???????????????????????????");
-        List<ActiviteCategory> test = activiteCategory.getValue();
-        return "";
-    }
-
     public LiveData<List<ActiviteData>> getAllActiviteData() {
         return activiteList;
     }
