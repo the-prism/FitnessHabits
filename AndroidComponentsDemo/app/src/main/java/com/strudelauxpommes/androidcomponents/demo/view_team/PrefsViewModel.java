@@ -27,4 +27,13 @@ public class PrefsViewModel extends ViewModel {
         return this.repository.getPreferenceInstance("pref.user.height");
     }
 
+    public PreferenceInstance<CalendarDate> userBirthDate() {
+        return this.repository.getPreferenceInstance("pref.user.birth_date");
+    }
+
+    public PreferenceInstance<Gender> userGender() {
+        return this.repository.getPreferenceInstance("pref.user.gender");
+    }
+
+
 }

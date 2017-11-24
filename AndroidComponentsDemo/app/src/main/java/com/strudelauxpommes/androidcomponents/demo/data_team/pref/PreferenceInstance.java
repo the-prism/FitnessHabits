@@ -48,7 +48,14 @@ public class PreferenceInstance<PrefType> extends BaseModelObject {
 
         if (record != null) {
             record.name = pref.name();
-            record.setValue(pref.encodeToString(value));
+
+            if (value == null) {
+                print("saving pref... value is null:" + pref.name());
+                record.setValue(null);
+            } else {
+                record.setValue(pref.encodeToString(value));
+            }
+
             repository.savePrefRecord(record);
         }
 

@@ -58,7 +58,6 @@ public abstract class BasePreference extends BaseModelObject {
     }
 
     public Object getDefaultValue() {
-        assertThat(false);
         return null;
     }
 
@@ -137,7 +136,15 @@ public abstract class BasePreference extends BaseModelObject {
             return "pref.user.birth_date";
         }
 
+        @Override
+        public Object parseFromString(String value) {
+            return CalendarDate.fromDatabaseString(value);
+        }
 
+        @Override
+        public String encodeToString(Object date) {
+            return ((CalendarDate)date).toDatabaseString();
+        }
 
     }
 
@@ -146,6 +153,23 @@ public abstract class BasePreference extends BaseModelObject {
         public String name() {
             return "pref.user.gender";
         }
+
+        @Override
+        public Object parseFromString(String value) {
+            return Gender.decodeFromString(value);
+        }
+
+        @Override
+        public String encodeToString(Object object) {
+            return ((Gender)object).encodeToString();
+        }
+
+        @Override
+        public Object getDefaultValue() {
+            return Gender.MALE;
+        }
+
+
 
     }
 

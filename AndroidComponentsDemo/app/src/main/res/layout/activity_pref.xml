@@ -14,18 +14,6 @@
         tools:layout_editor_absoluteY="16dp">
 
         <TextView
-            android:id="@+id/showNameTextId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/showTailleTextId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +90,7 @@
                 android:text="Date naissance" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/prefBirthDateTextId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -110,7 +98,7 @@
                 android:inputType="datetime" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/prefBirthDateSaveButId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -132,7 +120,7 @@
                 android:text="Sexe" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/prefGenderTextId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -140,7 +128,7 @@
                 android:inputType="textPersonName" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/prefGenderSaveButId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -1,12 +1,14 @@
 package com.strudelauxpommes.androidcomponents.demo.data_team.util;
 
 
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.SerializableToString;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class CalendarDate extends BaseModelObject {
+public class CalendarDate extends BaseModelObject implements SerializableToString {
 
     static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     Calendar date;
@@ -45,6 +47,11 @@ public class CalendarDate extends BaseModelObject {
         // utilité: pour la méthode CalendarView::setDate()
         Calendar calendar = Calendar.getInstance();
         return calendar.getTimeInMillis();
+    }
+
+    @Override
+    public String encodeToString() {
+        return toDatabaseString();
     }
 
 }
