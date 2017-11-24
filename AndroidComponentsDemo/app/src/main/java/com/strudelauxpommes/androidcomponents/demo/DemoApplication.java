@@ -4,8 +4,10 @@ import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.support.annotation.MainThread;
 
+import com.strudelauxpommes.androidcomponents.demo.data_team.ActiviteDataRepository;
 import com.strudelauxpommes.androidcomponents.demo.data_team.AppDatabase;
 import com.strudelauxpommes.androidcomponents.demo.data_team.UIDataRepository;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
 
 /**
  * Application class used as a singleton to create the Data layer classes (Repository and Database)
@@ -18,6 +20,7 @@ public class DemoApplication extends Application {
 
     private AppDatabase database;
     private UIDataRepository uiDataRepository;
+    private ActiviteDataRepository activiteDataRepository;
 
     @MainThread
     public AppDatabase getDatabase() {
@@ -35,11 +38,20 @@ public class DemoApplication extends Application {
         return uiDataRepository;
     }
 
+    @MainThread
+    public ActiviteDataRepository getActiviteDataRepository() {
+        if (activiteDataRepository == null) {
+            activiteDataRepository = new ActiviteDataRepository(getDatabase().activiteDAO());
+        }
+        return activiteDataRepository;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         DemoApplication.application = this;
+
     }
 
 }

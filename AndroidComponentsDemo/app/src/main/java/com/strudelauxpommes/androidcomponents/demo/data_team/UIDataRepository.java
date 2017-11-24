@@ -65,12 +65,6 @@ public class UIDataRepository extends BaseModelObject {
         return getDateRepository(date).loadWeightRecordLiveData();
     }
 
-
-
-
-
-
-
     public LiveData<UIData> loadUIData() {
         UIData defaultUIData = new UIData();
         defaultUIData.setBackgroundColor(FormViewModel.BackgroundColor.blue);
@@ -95,9 +89,6 @@ public class UIDataRepository extends BaseModelObject {
             }
         }.execute();
     }
-
-
-
 
     @SuppressLint("StaticFieldLeak")
     @MainThread

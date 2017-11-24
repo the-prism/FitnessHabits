@@ -1,6 +1,9 @@
 package com.strudelauxpommes.androidcomponents.demo.data_team;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.LiveData;
+import android.os.AsyncTask;
+import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
 import com.strudelauxpommes.androidcomponents.demo.data_team.*;
@@ -39,5 +42,17 @@ public class ActiviteDataRepository {
                 return activiteDAO.getActivite(new Date().getTime());
             }
         }.getAsLiveData();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    @MainThread
+    public void saveUIData(ActiviteData activiteData) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                activiteDAO.insertOrReplaceUIData(activiteData);
+                return null;
+            }
+        }.execute();
     }
 }
