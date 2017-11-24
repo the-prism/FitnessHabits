@@ -1,48 +1,48 @@
 package com.strudelauxpommes.androidcomponents.demo.data_team.util;
 
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
 public class CalendarDate {
 
-    LocalDate date;
-    static DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    Calendar date;
 
-    public CalendarDate(LocalDate date) {
+    public CalendarDate(Calendar date) {
         this.date = date;
     }
 
-    public String toDatabaseString() {
-        return format.format(date);
-    }
-
     public static CalendarDate fromDatabaseString(String string) {
-        LocalDate parsed = LocalDate.parse(string, format);
-        return new CalendarDate(parsed);
+        Calendar date = Calendar.getInstance();
+        try {
+            date.setTime(format.parse(string));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            date.clear();
+        }
+        return new CalendarDate(date);
     }
 
     public static CalendarDate now() {
-        return new CalendarDate(LocalDate.now());
+        return new CalendarDate(Calendar.getInstance());
     }
 
     public static CalendarDate fromYearMonthDay(int year, int month, int day) {
-        return new CalendarDate(LocalDate.of(year, month, day));
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+        return new CalendarDate(calendar);
+    }
+
+    public String toDatabaseString() {
+        return format.format(date.getTime());
     }
 
     public long getTimeInMillis() {
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, date.getYear());
-        calendar.set(Calendar.MONTH, date.getMonthValue());
-        calendar.set(Calendar.DAY_OF_MONTH, date.getDayOfMonth());
-
         return calendar.getTimeInMillis();
     }
-
-
-
 }

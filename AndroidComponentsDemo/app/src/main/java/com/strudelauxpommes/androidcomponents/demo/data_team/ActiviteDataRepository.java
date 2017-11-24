@@ -6,10 +6,11 @@ import android.os.AsyncTask;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
-import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
-import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategory;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteCategoryDAO;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteData;
+import com.strudelauxpommes.androidcomponents.demo.data_team.record.ActiviteDataDAO;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +19,10 @@ import java.util.List;
  */
 
 public class ActiviteDataRepository {
-    private ActiviteDataDAO activiteDataDAO;
-    private ActiviteCategoryDAO activiteCategoryDAO;
     LiveData<List<ActiviteData>> activitesData;
     LiveData<List<ActiviteCategory>> activiteCategory;
+    private ActiviteDataDAO activiteDataDAO;
+    private ActiviteCategoryDAO activiteCategoryDAO;
 
     public ActiviteDataRepository(ActiviteDataDAO activiteDataDAO, ActiviteCategoryDAO activiteCategoryDAO) {
         this.activiteDataDAO = activiteDataDAO;
