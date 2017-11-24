@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.strudelauxpommes.androidcomponents.demo.DemoApplication;
@@ -22,6 +24,11 @@ import com.strudelauxpommes.androidcomponents.demo.view_team.ActiviteViewModel;
 public class ActiviteActivity extends BaseSubActivity {
 
     ListView listView;
+    Button newItem;
+    EditText categoryId;
+    EditText amount;
+    EditText date;
+
     ActiviteViewModel viewModel;
     LiveData<String> listActi;
     String[] values = new String[]{"BOB"};
@@ -43,6 +50,20 @@ public class ActiviteActivity extends BaseSubActivity {
         viewModel = ViewModelProviders.of(this).get(ActiviteViewModel.class);
         viewModel.init(DemoApplication.application.getActiviteDataRepository());
         listView = findViewById(R.id.alcoolListViewId);
+        newItem = findViewById(R.id.newActivityButton);
+        categoryId = findViewById(R.id.categoryId);
+        amount = findViewById(R.id.amount);
+        date = findViewById(R.id.date);
+
+        newItem.setOnClickListener(view -> {
+            ActiviteData fromUI = new ActiviteData();
+            int id = Integer.parseInt(categoryId.getText().toString());
+            int inten = Integer.parseInt(amount.getText().toString());
+            fromUI.setCategoryId(id);
+            fromUI.setDate(date.getText().toString());
+            fromUI.setIntensite(inten);
+            viewModel.insertItem(fromUI);
+        });
 
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
