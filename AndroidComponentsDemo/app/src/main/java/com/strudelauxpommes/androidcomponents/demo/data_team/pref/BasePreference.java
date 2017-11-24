@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
 import com.strudelauxpommes.androidcomponents.demo.data_team.*;
+import com.strudelauxpommes.androidcomponents.demo.data_team.model.SerializableToString;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class BasePreference extends BaseModelObject {
+public abstract class BasePreference<Type> extends BaseModelObject {
 
     PreferenceManager manager;
     PreferenceInstance prefInstance = null;
@@ -92,7 +93,7 @@ public abstract class BasePreference extends BaseModelObject {
     // =======================================================
     // =======================================================
 
-    public static class PrefUserName extends BasePreference {
+    public static class PrefUserName extends BasePreference<String> {
 
         public String name() {
             return "pref.user.name";
@@ -109,7 +110,7 @@ public abstract class BasePreference extends BaseModelObject {
 
     }
 
-    public static class PrefUserHeight extends BasePreference {
+    public static class PrefUserHeight extends BasePreference<Float> {
 
         public String name() {
             return "pref.user.height";
@@ -129,7 +130,7 @@ public abstract class BasePreference extends BaseModelObject {
 
     }
 
-    public static class PrefUserBirthDate extends BasePreference {
+    public static class PrefUserBirthDate extends BasePreference<CalendarDate> {
 
         @Override
         public String name() {
@@ -148,7 +149,7 @@ public abstract class BasePreference extends BaseModelObject {
 
     }
 
-    public static class PrefUserGender extends BasePreference {
+    public static class PrefUserGender extends BasePreference<Gender> {
 
         public String name() {
             return "pref.user.gender";
@@ -200,7 +201,8 @@ public abstract class BasePreference extends BaseModelObject {
 
 
 
-    public static class PrefCurrentViewDate extends BasePreference {
+
+    public static class PrefCurrentViewDate extends BasePreference<CalendarDate> {
 
         public String name() {
             return "pref.tmp.current_view_date";
@@ -222,13 +224,6 @@ public abstract class BasePreference extends BaseModelObject {
         }
 
     }
-
-
-
-
-
-
-
 
 
 
