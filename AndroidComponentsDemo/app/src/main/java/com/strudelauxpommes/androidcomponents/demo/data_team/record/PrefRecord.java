@@ -10,7 +10,7 @@ import com.strudelauxpommes.androidcomponents.demo.view_team.*;
 
 
 @Entity(primaryKeys = {"name"})
-public class PrefRecord {
+public class PrefRecord extends BaseRecord {
 
     @NonNull
     public String name;

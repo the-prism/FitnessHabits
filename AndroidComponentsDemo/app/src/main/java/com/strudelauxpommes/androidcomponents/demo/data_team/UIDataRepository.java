@@ -12,6 +12,9 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.record.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 import com.strudelauxpommes.androidcomponents.demo.data_team.pref.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * A Repository is used to combine one or several data source. The Repository is agnostic of it's
@@ -39,29 +42,32 @@ public class UIDataRepository extends BaseModelObject {
         this.prefRecordDao = prefRecordDao;
 
         this.prefManager = new PreferenceManager(this);
-
-
     }
 
 
+
+    Map<String, DateRepository> cache = new HashMap<>();
+
+
+    public DateRepository getDateRepository(CalendarDate date) {
+
+        if(!cache.containsKey(date.toDatabaseString())) {
+            cache.put(date.toDatabaseString(), new DateRepository(this, date));
+        }
+
+        DateRepository repo = cache.get(date.toDatabaseString());
+        assertThat(repo != null);
+        return repo;
+    }
 
 
     public LiveData<WeightRecord> loadWeightRecordLiveData(CalendarDate date) {
-
-        WeightRecord defaultRecord = new WeightRecord();
-        defaultRecord.date = date;
-        defaultRecord.weight = null;
-
-        return new DatabaseResource<WeightRecord>(defaultRecord) {
-            @NonNull
-            @Override
-            protected LiveData<WeightRecord> loadFromDb() {
-                return weightRecordDao.searchWeightRecord(date);
-            }
-        }.getAsLiveData();
-
-
+        return getDateRepository(date).loadWeightRecordLiveData();
     }
+
+
+
+
 
 
 

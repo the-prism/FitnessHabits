@@ -8,44 +8,42 @@ import android.util.Log;
 
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.PrefRecord;
 import com.strudelauxpommes.androidcomponents.demo.data_team.record.WeightRecord;
+import com.strudelauxpommes.androidcomponents.demo.data_team.util.BaseModelObject;
 import com.strudelauxpommes.androidcomponents.demo.data_team.util.CalendarDate;
 
-public class RecordInstance {
+public class RecordInstance extends BaseModelObject {
 
-    @NonNull
     CalendarDate date;
-
-    @NonNull
     UIDataRepository repository;
-
-    @NonNull
     LiveData<Float> liveData;
-
-    @NonNull
     LiveData<WeightRecord> weightRecord;
+    BaseField field;
 
-
-    public RecordInstance(UIDataRepository repository, CalendarDate date, LiveData<WeightRecord> weightRecord ) {
+    public RecordInstance(UIDataRepository repository, CalendarDate date, BaseField field, LiveData<WeightRecord> weightRecord ) {
         this.repository = repository;
         this.date = date;
         this.weightRecord = weightRecord;
+        this.field = field;
 
         this.liveData = Transformations.map(this.weightRecord, x -> transform(x));
     }
 
     public Float transform(WeightRecord weightRecord) {
-        if(weightRecord.weight == null) {
+        Float value = (Float)field.getRecordValue(weightRecord);
+
+        if(value == null) {
             return 0F;
         } else {
-            return weightRecord.weight;
+            return value;
         }
+
     }
 
     public void setValue(float value) {
 
-        WeightRecord record = new WeightRecord();
+        WeightRecord record = weightRecord.getValue();
         record.date = this.date;
-        record.weight = value;
+        field.setRecordValue(record, value);
 
         repository.saveWeightRecord(record);
 

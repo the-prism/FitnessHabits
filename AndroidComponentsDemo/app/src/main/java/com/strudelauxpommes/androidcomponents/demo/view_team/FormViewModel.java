@@ -62,11 +62,15 @@ public class FormViewModel extends ViewModel {
 
         Log.d("weightForCurrentDate date:", date.toDatabaseString());
 
-        return new RecordInstance(repository, date, repository.loadWeightRecordLiveData(date));
+        return new RecordInstance(repository, date, new WeightFieldWeight(), repository.loadWeightRecordLiveData(date));
 
     }
 
-
+    public RecordInstance fatForCurrentDate() {
+        CalendarDate date = currentViewDate().liveData().getValue();
+        Log.d("fatForCurrentDate date:", date.toDatabaseString());
+        return new RecordInstance(repository, date, new WeightFieldFat(), repository.loadWeightRecordLiveData(date));
+    }
 
 
     // ==============================================================================
@@ -108,6 +112,9 @@ public class FormViewModel extends ViewModel {
         // Transform the Data layer LiveData to the ModelView live data
         backgroundColor = Transformations.map(uiDataLiveData, UIData::getBackgroundColor);
         fontSize = Transformations.map(uiDataLiveData, UIData::getFontSize);
+
+
+
     }
 
     // Only ViewModel LiveData should be exposed. The Data layer should not be exposed by the ViewModel.

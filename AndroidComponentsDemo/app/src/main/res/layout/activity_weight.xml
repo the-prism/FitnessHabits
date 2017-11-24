@@ -35,6 +35,26 @@
             android:text="Save"
             tools:layout_editor_absoluteX="28dp"
             tools:layout_editor_absoluteY="266dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="% de gras" />
+
+        <EditText
+            android:id="@+id/grasInputId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/grasSaveButtonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

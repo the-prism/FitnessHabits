@@ -10,14 +10,13 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 
 
 
-
 @Entity(primaryKeys = {"date"})
-public class WeightRecord {
+public class WeightRecord extends BaseRecord {
 
     @NonNull
     public CalendarDate date;
 
-    @NonNull
     public Float weight;
+    public Float fat;
 
 }

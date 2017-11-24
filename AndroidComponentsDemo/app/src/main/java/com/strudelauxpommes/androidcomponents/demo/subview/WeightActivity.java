@@ -20,7 +20,9 @@ import com.strudelauxpommes.androidcomponents.demo.view_team.*;
 public class WeightActivity extends BaseSubActivity {
 
     EditText weightInput;
-    Button saveButton;
+    EditText fatInput;
+    Button saveWeightButton;
+    Button saveFatButton;
     public FormViewModel viewModel;
 
 
@@ -33,41 +35,33 @@ public class WeightActivity extends BaseSubActivity {
 
 
     void initReferences() {
-        weightInput = findViewById(R.id.weightInputId);
-        saveButton = findViewById(R.id.weightSaveButtonId);
 
         viewModel = ViewModelProviders.of(this).get(FormViewModel.class);
         viewModel.init(DemoApplication.application.getUIDataRepository());
 
-        saveButton.setOnClickListener(button -> onSaveButton());
+        // weight
+        weightInput = findViewById(R.id.weightInputId);
+        saveWeightButton = findViewById(R.id.weightSaveButtonId);
+        saveWeightButton.setOnClickListener(button -> onSaveWeightButton());
         viewModel.weightForCurrentDate().liveData().observe(this, weight -> weightInput.setText(weight.toString()));
+
+        // fat
+        fatInput = findViewById(R.id.grasInputId);
+        saveFatButton = findViewById(R.id.grasSaveButtonId);
+        saveFatButton.setOnClickListener(button -> onSaveFatButton());
+        viewModel.fatForCurrentDate().liveData().observe(this, fat -> fatInput.setText(fat.toString()));
 
     }
 
-
-    void onSaveButton() {
+    void onSaveWeightButton() {
         float weight = Float.parseFloat(weightInput.getText().toString());
         viewModel.weightForCurrentDate().setValue(weight);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    void onSaveFatButton() {
+        float fat = Float.parseFloat(fatInput.getText().toString());
+        viewModel.fatForCurrentDate().setValue(fat);
+    }
 
 
 
