@@ -31,8 +31,8 @@ public class DrinkRepository extends BaseRepository {
         this.topic = new GeneralCategory.Alcool();
     }
 
-    public LiveData<DrinkKind>
-            getDrinkKindRecords XXXXX
+    //public LiveData<DrinkKind>
+    //        getDrinkKindRecords XXXXX
 
     public LiveData<List<DrinkKindRecord>> loadDrinkKindRecords() {
 
