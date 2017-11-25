@@ -15,8 +15,8 @@ public class PrefsViewModel extends ViewModel {
 
     UIDataRepository repository;
 
-    public void init(UIDataRepository repository) {
-        this.repository = repository;
+    public void init(MainRepository repository) {
+        this.repository = repository.uiDataRepo;
     }
 
     public PreferenceInstance<String> userName() {

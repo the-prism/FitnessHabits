@@ -22,8 +22,9 @@
         </activity>
         <activity android:name=".subview.WeightActivity" />
         <activity android:name=".subview.AlcoolActivity" />
-        <activity android:name=".subview.PrefActivity"></activity>
-        <activity android:name=".subview.ActiviteActivity"/>
+        <activity android:name=".subview.PrefActivity" />
+        <activity android:name=".subview.ActiviteActivity" />
+        <activity android:name=".subview.TestActivity"></activity>
     </application>
 
 </manifest>

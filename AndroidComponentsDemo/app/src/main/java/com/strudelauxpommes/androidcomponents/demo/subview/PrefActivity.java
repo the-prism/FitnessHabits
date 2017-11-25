@@ -35,7 +35,7 @@ public class PrefActivity extends BaseSubActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pref);
-        initReferences();
+        initEverything();
     }
 
 
@@ -51,10 +51,12 @@ public class PrefActivity extends BaseSubActivity {
         genderInput = findViewById(R.id.prefGenderTextId);
         genderButton = findViewById(R.id.prefGenderSaveButId);
 
-
         viewModel = ViewModelProviders.of(this).get(PrefsViewModel.class);
-        viewModel.init(DemoApplication.application.getUIDataRepository());
+        viewModel.init(DemoApplication.application.getMainRepository());
+    }
 
+    @Override
+    void initActivity() {
         viewModel.userName().liveData().observe(this, name -> nameButSave.setText(name));
         viewModel.userName().liveData().observe(this, name -> nameInput.setText(name));
         nameButSave.setOnClickListener(button -> viewModel.userName().setValue(nameInput.getText().toString()));
@@ -89,14 +91,6 @@ public class PrefActivity extends BaseSubActivity {
             return CalendarDate.fromDatabaseString(string);
         }
     }
-
-
-
-
-
-
-
-
 
 
 

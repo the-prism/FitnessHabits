@@ -11,17 +11,15 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 @Entity
 public class DrinkKindRecord {
 
-    @PrimaryKey
+    @NonNull
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
     public String name;
 
     public Float volume;
 
-    public VolumeMeasureUnit measureUnit;
-
     @NonNull
-    @PrimaryKey
-    public GeneralCategory category; // alcool ou breuvage
+    public GeneralCategory topic; // alcool ou breuvage
 
 }

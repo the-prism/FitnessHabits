@@ -42,7 +42,7 @@ public class ActiviteActivity extends BaseSubActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activites);
-        initReferences();
+        initEverything();
     }
 
 
@@ -54,7 +54,10 @@ public class ActiviteActivity extends BaseSubActivity {
         categoryId = findViewById(R.id.categoryId);
         amount = findViewById(R.id.amount);
         date = findViewById(R.id.date);
+    }
 
+    @Override
+    void initActivity() {
         newItem.setOnClickListener(view -> {
             ActiviteEntry fromUI = new ActiviteEntry();
             int id = Integer.parseInt(categoryId.getText().toString());

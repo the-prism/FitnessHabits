@@ -17,7 +17,7 @@ import java.util.List;
 public interface AlcoolRecordDao {
 
     @Query("SELECT * FROM AlcoolRecord WHERE date == :date AND kind == :kind")
-    LiveData<PrefRecord> getAlcoolRecord(CalendarDate date, int kind);
+    LiveData<AlcoolRecord> getAlcoolRecord(CalendarDate date, int kind);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOrReplaceAlcoolRecord(AlcoolRecord alcoolRecord);

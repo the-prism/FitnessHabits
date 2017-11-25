@@ -20,17 +20,19 @@ import java.util.List;
 public class DrinkRepository extends BaseRepository {
 
     LiveData<List<DrinkKindRecord>> drinkKindRecords;
-    DrinkKindRecordDao drinkKindRecordDao;
+    public DrinkKindRecordDao drinkKindRecordDao;
     AlcoolRecordDao alcoolRecordDao;
-    GeneralCategory catAlcool;
+    public GeneralCategory topic;
 
     public DrinkRepository(DrinkKindRecordDao drinkKindRecordDao, AlcoolRecordDao alcoolRecordDao) {
         this.drinkKindRecordDao = drinkKindRecordDao;
         this.alcoolRecordDao = alcoolRecordDao;
 
-        this.catAlcool = new GeneralCategory.Alcool();
+        this.topic = new GeneralCategory.Alcool();
     }
 
+    public LiveData<DrinkKind>
+            getDrinkKindRecords XXXXX
 
     public LiveData<List<DrinkKindRecord>> loadDrinkKindRecords() {
 
@@ -45,7 +47,7 @@ public class DrinkRepository extends BaseRepository {
                 @NonNull
                 @Override
                 protected LiveData<List<DrinkKindRecord>> loadFromDb() {
-                    return drinkKindRecordDao.getDrinkKindRecords(catAlcool);
+                    return drinkKindRecordDao.getDrinkKindRecords(topic);
                 }
             }.getAsLiveData();
 
@@ -54,6 +56,12 @@ public class DrinkRepository extends BaseRepository {
         return drinkKindRecords;
     }
 
+
+    public DrinkKindEntry newDrinkKindEntry() {
+        DrinkKindRecord record = new DrinkKindRecord();
+        record.topic = topic;
+        return new DrinkKindEntry(this, record );
+    }
 
 
 

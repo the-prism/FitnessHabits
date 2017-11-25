@@ -18,8 +18,8 @@ public class DemoApplication extends Application {
     public static DemoApplication application;
 
     private AppDatabase database;
-    private UIDataRepository uiDataRepository;
     private ActiviteDataRepository activiteDataRepository;
+    MainRepository mainRepository;
 
     @MainThread
     public AppDatabase getDatabase() {
@@ -27,14 +27,6 @@ public class DemoApplication extends Application {
             database = Room.databaseBuilder(this, AppDatabase.class, "demo-database").fallbackToDestructiveMigration().build();
         }
         return database;
-    }
-
-    @MainThread
-    public UIDataRepository getUIDataRepository() {
-        if (uiDataRepository == null) {
-            uiDataRepository = new UIDataRepository(getDatabase().userDao(), getDatabase().weightDao(), getDatabase().prefRecordDao());
-        }
-        return uiDataRepository;
     }
 
     @MainThread
@@ -52,5 +44,14 @@ public class DemoApplication extends Application {
         DemoApplication.application = this;
 
     }
+
+    @MainThread
+    public MainRepository getMainRepository() {
+        if (mainRepository == null) {
+            mainRepository = new MainRepository(getDatabase());
+        }
+        return mainRepository;
+    }
+
 
 }

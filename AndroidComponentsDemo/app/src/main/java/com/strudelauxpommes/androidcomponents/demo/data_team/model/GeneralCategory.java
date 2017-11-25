@@ -11,7 +11,7 @@ import com.strudelauxpommes.androidcomponents.demo.data_team.util.*;
 
 
 
-public abstract class GeneralCategory extends BaseModelObject {
+public abstract class GeneralCategory extends BaseModelObject { // todo: rename for "topic"
 
     public abstract String name();
 

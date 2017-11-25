@@ -60,8 +60,11 @@ public class FormViewModel extends ViewModel {
         main_activity.startActivityForResult(intent, 0);
     }
 
-
-
+    public void onTestButton(MainActivity main_activity, View button) {
+        Context context = button.getContext();
+        Intent intent = new Intent(context, TestActivity.class);
+        main_activity.startActivityForResult(intent, 0);
+    }
 
 
     public RecordInstance weightForCurrentDate() {
@@ -98,7 +101,7 @@ public class FormViewModel extends ViewModel {
         }
     }
 
-
+    public MainRepository mainRepo;
 
 
     // Data layer
@@ -112,15 +115,15 @@ public class FormViewModel extends ViewModel {
     public static final int minFontSize = 12;
     public static final int maxFontSize = 36;
 
-    public void init(UIDataRepository repository) {
-        this.repository = repository;
-        // Get the data from the repository
+    public void init(MainRepository mainRepo) {
+        this.mainRepo = mainRepo;
+        this.repository = mainRepo.uiDataRepo;
+
         this.uiDataLiveData = repository.loadUIData();
+
         // Transform the Data layer LiveData to the ModelView live data
         backgroundColor = Transformations.map(uiDataLiveData, UIData::getBackgroundColor);
         fontSize = Transformations.map(uiDataLiveData, UIData::getFontSize);
-
-
 
     }
 

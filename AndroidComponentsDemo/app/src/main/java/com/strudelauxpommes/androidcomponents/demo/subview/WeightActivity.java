@@ -17,6 +17,7 @@ import com.strudelauxpommes.androidcomponents.demo.view_team.*;
 
 
 
+
 public class WeightActivity extends BaseSubActivity {
 
     EditText weightInput;
@@ -30,14 +31,17 @@ public class WeightActivity extends BaseSubActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight);
-        initReferences();
+        initEverything();
     }
 
 
     void initReferences() {
-
         viewModel = ViewModelProviders.of(this).get(FormViewModel.class);
-        viewModel.init(DemoApplication.application.getUIDataRepository());
+        viewModel.init(DemoApplication.application.getMainRepository());
+    }
+
+    @Override
+    void initActivity() {
 
         // weight
         weightInput = findViewById(R.id.weightInputId);

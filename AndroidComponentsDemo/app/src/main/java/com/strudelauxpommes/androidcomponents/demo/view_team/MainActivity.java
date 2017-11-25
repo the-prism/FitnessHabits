@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Button alcoolButton;
     Button prefButton;
     Button activiteButton;
+    Button testButton;
 
     CalendarView calendar;
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Step 3: Get and initialize the ViewModel for this View with the data repository
         viewModel = ViewModelProviders.of(this).get(FormViewModel.class);
-        viewModel.init(DemoApplication.application.getUIDataRepository());
+        viewModel.init(DemoApplication.application.getMainRepository());
 
         // Step 4: Bind the ViewModel values to the UI
         // Register to the changes of the models to update the UI automatically when needed
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         weightButton = findViewById(R.id.mainWeightButton);
         prefButton = findViewById(R.id.mainPrefsButton);
         activiteButton = findViewById(R.id.mainActiviteButton);
+        testButton = findViewById(R.id.mainTestButton);
 
         buttonTextSizePicker = findViewById(R.id.buttonTextSizePicker);
 
@@ -113,12 +115,11 @@ public class MainActivity extends AppCompatActivity {
         purpleButton.setOnClickListener(button -> viewModel.setBackgroundColor(FormViewModel.BackgroundColor.purple));
         buttonTextSizePicker.setOnValueChangedListener((numberPicker, oldFontSize, newFontSize) -> viewModel.setFontSize(newFontSize));
 
-
         weightButton.setOnClickListener(button -> viewModel.onWeightButton(this, button));
         alcoolButton.setOnClickListener(button -> viewModel.onAlcoolButton(this, button));
         prefButton.setOnClickListener(button -> viewModel.onPrefButton(this, button));
         activiteButton.setOnClickListener(button -> viewModel.onActiviteButton(this, button));
-
+        testButton.setOnClickListener(button -> viewModel.onTestButton(this, button));
 
         calendar.setOnDateChangeListener((calendar, year, month, day) -> onDateChange(year, month, day));
         viewModel.currentViewDate().liveData().observe(this, value -> calendar.setDate(value.getTimeInMillis()));

@@ -14,8 +14,8 @@ import java.util.List;
 @Dao
 public interface DrinkKindRecordDao {
 
-    @Query("SELECT * FROM DrinkKindRecord WHERE category == :category")
-    LiveData<List<DrinkKindRecord>> getDrinkKindRecords(GeneralCategory category);
+    @Query("SELECT * FROM DrinkKindRecord WHERE topic == :topic")
+    LiveData<List<DrinkKindRecord>> getDrinkKindRecords(GeneralCategory topic);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOrReplaceDrinkKindRecord(DrinkKindRecord drinkKindRecord);
