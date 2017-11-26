@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.strudelauxpommes.fitnesshabits.BeverageDetailsActivity;
 import com.strudelauxpommes.fitnesshabits.R;
 
 import java.util.ArrayList;
@@ -19,11 +20,11 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class BeverageFragment extends Fragment {
-    LinearLayout layoutHeader;
+    static LinearLayout layoutHeader;
 
-    Button btnFav1, btnFav2, btnFav3, btnOthers;
-    TextView txtTotal;
-    ArrayList<Breuvage> breuvArray;
+    static Button btnFav1, btnFav2, btnFav3, btnOthers;
+    static TextView txtTotal;
+    static ArrayList<Breuvage> breuvArray;
     int qtyBtn1, qtyBtn2, qtyBtn3;
 
     public BeverageFragment() {
@@ -31,7 +32,7 @@ public class BeverageFragment extends Fragment {
 
     }
 
-    /**public ArrayList<Breuvage> getFavorites(){
+    public ArrayList<Breuvage> getFavorites(){
 
         Breuvage b1 = new Breuvage();
         b1.setName("Eau");
@@ -39,14 +40,14 @@ public class BeverageFragment extends Fragment {
         b1.setQuantite_ml(250);
 
         Breuvage b2 = new Breuvage();
-        b1.setName("Pepsi");
-        b1.setEstFavoris(true);
-        b1.setQuantite_ml(250);
+        b2.setName("Pepsi");
+        b2.setEstFavoris(true);
+        b2.setQuantite_ml(250);
 
         Breuvage b3 = new Breuvage();
-        b1.setName("Café");
-        b1.setEstFavoris(true);
-        b1.setQuantite_ml(250);
+        b3.setName("Café");
+        b3.setEstFavoris(true);
+        b3.setQuantite_ml(125);
 
         ArrayList<Breuvage> listBr = new ArrayList<Breuvage>();
         listBr.add(b1);
@@ -54,20 +55,17 @@ public class BeverageFragment extends Fragment {
         listBr.add(b3);
 
         return  listBr;
-    }*/
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        /**
-        txtTotal = (TextView) getView().findViewById(R.id.txt_bevTotal);
 
-        breuvArray = getFavorites();
-        setNameBtn(btnFav1, breuvArray.get(1), qtyBtn1);
-        setNameBtn(btnFav2, breuvArray.get(2), qtyBtn2);
-        setNameBtn(btnFav3, breuvArray.get(3), qtyBtn3);
-        setTotalTitle();
+        View rootView = inflater.inflate(R.layout.fragment_beverage, container,false);
 
-        layoutHeader =(LinearLayout) getView().findViewById(R.id.layout_bevSumHeader);
+        txtTotal = (TextView)rootView.findViewById(R.id.txt_bevTotal);
+
+        layoutHeader =(LinearLayout) rootView.findViewById(R.id.layout_bevSumHeader);
         layoutHeader.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -75,60 +73,68 @@ public class BeverageFragment extends Fragment {
             }
         });
 
-        btnFav1 =(Button) getView().findViewById(R.id.btn_bevSummaryFav1);
-        layoutHeader.setOnClickListener(new View.OnClickListener(){
+        btnFav1 =(Button) rootView.findViewById(R.id.btn_bevSummaryFav1);
+        btnFav1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 qtyBtn1++;
-                setNameBtn(btnFav1, breuvArray.get(1), qtyBtn1);
+                setNameBtn(btnFav1, breuvArray.get(0), qtyBtn1);
                 setTotalTitle();
             }
         });
-        btnFav2 =(Button) getView().findViewById(R.id.btn_bevSummaryFav2);
-        layoutHeader.setOnClickListener(new View.OnClickListener(){
+        btnFav2 =(Button) rootView.findViewById(R.id.btn_bevSummaryFav2);
+        btnFav2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 qtyBtn2++;
-                setNameBtn(btnFav2, breuvArray.get(2), qtyBtn2);
+                setNameBtn(btnFav2, breuvArray.get(1), qtyBtn2);
                 setTotalTitle();
             }
         });
-        btnFav3 =(Button) getView().findViewById(R.id.btn_bevSummaryFav3);
-        layoutHeader.setOnClickListener(new View.OnClickListener(){
+        btnFav3 =(Button) rootView.findViewById(R.id.btn_bevSummaryFav3);
+        btnFav3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 qtyBtn3++;
-                setNameBtn(btnFav3, breuvArray.get(3), qtyBtn3);
+                setNameBtn(btnFav3, breuvArray.get(2), qtyBtn3);
                 setTotalTitle();
             }
         });
 
-        btnOthers =(Button) getView().findViewById(R.id.btn_bevSummaryOthers);
-        layoutHeader.setOnClickListener(new View.OnClickListener(){
+        btnOthers =(Button) rootView.findViewById(R.id.btn_bevSummaryOthers);
+        btnOthers.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 startBeverageDetails();
             }
-        });*/
+        });
+
+        breuvArray = getFavorites();
+        setNameBtn(btnFav1, breuvArray.get(0), qtyBtn1);
+        setNameBtn(btnFav2, breuvArray.get(1), qtyBtn2);
+        setNameBtn(btnFav3, breuvArray.get(2), qtyBtn3);
+        setTotalTitle();
+        //System.out.println(btnFav1.getText() + " " + btnFav2.getText() + " " + btnFav3.getText() );
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_beverage, container, false);
+        return rootView;
+
     }
 
 
     private void startBeverageDetails(){
-        //Intent myIntent = new Intent(getActivity(), BeverageDetailsActivity.class);
+        Intent myIntent = new Intent(getActivity(), BeverageDetailsActivity.class);
         //myIntent.putExtra("key", value); //Optional parameters
-        //getActivity().startActivity(myIntent);
+        getActivity().startActivity(myIntent);
     }
 
-    /**
+
     private void setNameBtn(Button btn, Breuvage b, int qty){
         btn.setText(b.getName()+"-"+b.getQuantite_ml()+"ml    "+ qty);
-    }*/
+    }
 
-    /**private void setTotalTitle(){
+    private void setTotalTitle(){
         //add others
          txtTotal.setText( (qtyBtn1+qtyBtn2+qtyBtn3) +"ml");
-    }*/
+    }
 }
